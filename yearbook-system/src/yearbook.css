@@ -1,0 +1,344 @@
+.yearbook {
+  width: 100%;
+  padding: 10px;
+}
+
+/* TOP TABS */
+
+.yearbook__tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.yearbook__tabs button {
+  border: none;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.yearbook__tabs button.active {
+  background: #2f5d8c;
+  color: white;
+}
+
+/* FEATURED */
+
+.yearbook__featured {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 28px;
+}
+
+.yearbook__cover {
+  width: 420px;
+  height: 520px;
+  border-radius: 18px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.yearbook__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yearbook__divider {
+  width: 1px;
+  height: 430px;
+  background: #e5e7eb;
+}
+
+.yearbook__featuredContent {
+  flex: 1;
+}
+
+.small-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #e8f0fb;
+  color: #4b6b90;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.yearbook__featuredContent h2 {
+  font-size: 42px;
+  color: #243b53;
+  margin-bottom: 12px;
+}
+
+.featured-program {
+  color: #64748b;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.featured-description {
+  color: #6b7280;
+  line-height: 1.8;
+  max-width: 420px;
+  margin-bottom: 30px;
+}
+
+.yearbook__controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.circle-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid #d1d5db;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.open-btn {
+  border: none;
+  background: #270252;
+  color: white;
+  padding: 13px 22px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* STUDENTS */
+
+.yearbook__students {
+  margin-top: 20px;
+}
+
+.yearbook__header {
+  margin-bottom: 20px;
+}
+
+.yearbook__header h2 {
+  font-size: 20px;
+  margin-bottom: 18px;
+  color: #220157;
+}
+
+/* DEPARTMENT TABS */
+
+.department-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.department-tabs button {
+  border: none;
+  background: transparent;
+  color: #6b7280;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.department-tabs button.active {
+  background: #4f46e5;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 10px;
+}
+
+/* ACTIONS */
+
+.yearbook__actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.yearbook__search {
+  flex: 1;
+  height: 50px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  gap: 12px;
+}
+
+.yearbook__search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+}
+
+.yearbook__filter {
+  width: 220px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  padding: 0 16px;
+  font-size: 14px;
+  background: white;
+}
+
+/* GRID */
+
+.yearbook__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+
+.yearbook__card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  transition: 0.3s;
+}
+
+.yearbook__card:hover {
+  transform: translateY(-4px);
+}
+
+.yearbook__image {
+  width: 100%;
+  height: 220px;
+}
+
+.yearbook__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.yearbook__info {
+  padding: 18px;
+}
+
+.yearbook__info h3 {
+  font-size: 18px;
+  color: #111827;
+  margin-bottom: 4px;
+}
+
+.student-initials {
+  display: block;
+  color: #94a3b8;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.yearbook__motto {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.yearbook__program {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+  .yearbook__featured {
+    flex-direction: column;
+  }
+
+  .yearbook__divider {
+    display: none;
+  }
+
+  .yearbook__cover {
+    width: 100%;
+    height: 420px;
+  }
+
+  .yearbook__featuredContent {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .yearbook__actions {
+    flex-direction: column;
+  }
+
+  .yearbook__filter {
+    width: 100%;
+    height: 50px;
+  }
+
+  .yearbook__featuredContent h2 {
+    font-size: 32px;
+  }
+
+  .yearbook__header h2 {
+    font-size: 28px;
+  }
+}
+
+/* HERO */
+.yearbook__hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+
+
+.yearbook__badge {
+  display: inline-block;
+  padding: 6px 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: #28065f;
+}
+
+.yearbook__hero h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.yearbook__hero p {
+  opacity: 0.7;
+  max-width: 600px;
+  margin: auto;
+}
