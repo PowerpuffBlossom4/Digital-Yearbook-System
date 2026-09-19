@@ -1,283 +1,2022 @@
-.yearbook {
-  width: 100%;
-  padding: 10px;
+
+/* =========================================================
+   ADSSU STUDENT YEARBOOK
+   A4 COVER • 5-COLUMN STUDENT GALLERY
+   LARGE SCREEN • GREEN SCHOOL THEME • FULL RESPONSIVE
+========================================================= */
+
+:root {
+  --adssu-green-950: #063b20;
+  --adssu-green-900: #07552d;
+  --adssu-green-800: #08733b;
+  --adssu-green-700: #0a8f49;
+  --adssu-green-600: #16a05a;
+  --adssu-green-500: #22b66a;
+
+  --adssu-green-100: #dcfce7;
+  --adssu-green-50: #f0fdf4;
+
+  --text-dark: #17251d;
+  --text: #34463b;
+  --text-light: #718077;
+
+  --border: #dce7df;
+
+  --surface: #ffffff;
+  --surface-soft: #f6faf7;
+
+  --shadow-sm:
+    0 4px 14px rgba(6, 59, 32, 0.06);
+
+  --shadow-md:
+    0 12px 32px rgba(6, 59, 32, 0.10);
+
+  --shadow-lg:
+    0 20px 50px rgba(6, 59, 32, 0.14);
 }
 
-/* TOP TABS */
+
+/* =========================================================
+   MAIN CONTAINER
+========================================================= */
+
+.yearbook {
+  width: 100%;
+  max-width: 1900px;
+
+  margin: 0 auto;
+
+  padding: 28px 40px 60px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.yearbook__hero {
+  position: relative;
+
+  text-align: center;
+
+  padding: 45px 20px 55px;
+
+  margin-bottom: 35px;
+
+  border-radius: 28px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--adssu-green-950),
+      var(--adssu-green-800)
+    );
+
+  overflow: hidden;
+
+  box-shadow: var(--shadow-lg);
+}
+
+.yearbook__hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 420px;
+  height: 420px;
+
+  right: -150px;
+  top: -220px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.07);
+}
+
+.yearbook__hero::after {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  left: -130px;
+  bottom: -190px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+.yearbook__badge {
+  position: relative;
+
+  z-index: 2;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 9px 18px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.22);
+
+  border-radius: 999px;
+
+  color: white;
+
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.02em;
+
+  margin-bottom: 16px;
+}
+
+.yearbook__hero h1 {
+  position: relative;
+
+  z-index: 2;
+
+  margin: 0 0 18px;
+
+  color: white;
+
+  font-size:
+    clamp(42px, 5vw, 72px);
+
+  line-height: 1.08;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
+}
+
+.yearbook__hero p {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 760px;
+
+  margin: 0 auto;
+
+  color:
+    rgba(255, 255, 255, 0.82);
+
+  font-size: 17px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   YEARBOOK TABS
+========================================================= */
 
 .yearbook__tabs {
   display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+
+  gap: 12px;
+
+  margin-bottom: 25px;
+
+  overflow-x: auto;
+
+  padding: 4px 3px 12px;
+
+  scrollbar-width: thin;
 }
 
 .yearbook__tabs button {
-  border: none;
-  background: #f1f5f9;
-  color: #475569;
-  padding: 10px 18px;
+  flex-shrink: 0;
+
+  border:
+    1px solid var(--border);
+
+  background: white;
+
+  color: var(--text);
+
+  padding: 13px 23px;
+
   border-radius: 999px;
-  font-size: 13px;
-  font-weight: 600;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition:
+    all 0.25s ease;
+
+  box-shadow: var(--shadow-sm);
+}
+
+.yearbook__tabs button:hover {
+  border-color:
+    var(--adssu-green-500);
+
+  color:
+    var(--adssu-green-800);
+
+  transform:
+    translateY(-2px);
 }
 
 .yearbook__tabs button.active {
-  background: #2f5d8c;
   color: white;
+
+  border-color:
+    var(--adssu-green-800);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--adssu-green-900),
+      var(--adssu-green-600)
+    );
+
+  box-shadow:
+    0 8px 20px
+    rgba(8, 115, 59, 0.20);
 }
 
-/* FEATURED */
+
+/* =========================================================
+   FEATURED YEARBOOK
+========================================================= */
 
 .yearbook__featured {
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 24px;
-  padding: 18px;
-  display: flex;
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(380px, 46%)
+    1px
+    minmax(0, 1fr);
+
   align-items: center;
-  gap: 28px;
-  margin-bottom: 28px;
+
+  gap: 42px;
+
+  padding: 40px;
+
+  margin-bottom: 45px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 30px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #f4faf6
+    );
+
+  box-shadow:
+    var(--shadow-md);
 }
 
+
+/* =========================================================
+   A4 YEARBOOK COVER
+   EXACT A4 PORTRAIT RATIO
+   210 : 297
+========================================================= */
+
 .yearbook__cover {
-  width: 420px;
-  height: 520px;
-  border-radius: 18px;
+  width: 100%;
+
+  max-width: 560px;
+
+  /*
+    A4 portrait ratio:
+    210mm × 297mm
+  */
+  aspect-ratio: 210 / 297;
+
+  height: auto;
+
+  margin: 0 auto;
+
+  border-radius: 22px;
+
   overflow: hidden;
-  flex-shrink: 0;
+
+  background:
+    #e5eee8;
+
+  position: relative;
+
+  box-shadow:
+    0 18px 45px
+    rgba(6, 59, 32, 0.18);
+}
+
+.yearbook__cover::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  pointer-events: none;
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.20);
+
+  border-radius: inherit;
+}
+
+.yearbook__coverFrame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e5eee8;
 }
 
 .yearbook__cover img {
+  display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
+  object-position: center;
+
+  background:
+    #e5eee8;
+  image-rendering: auto;
+  filter: saturate(1.06) contrast(1.03);
 }
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
 
 .yearbook__divider {
   width: 1px;
-  height: 430px;
-  background: #e5e7eb;
+
+  height: 480px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #cbdacf,
+      transparent
+    );
 }
 
+
+/* =========================================================
+   FEATURED CONTENT
+========================================================= */
+
 .yearbook__featuredContent {
-  flex: 1;
+  min-width: 0;
+
+  padding-right: 30px;
 }
 
 .small-label {
   display: inline-flex;
+
   align-items: center;
-  gap: 6px;
-  background: #e8f0fb;
-  color: #4b6b90;
-  padding: 6px 12px;
+
+  gap: 8px;
+
+  padding: 9px 15px;
+
+  margin-bottom: 20px;
+
   border-radius: 999px;
-  font-size: 12px;
-  font-weight: 600;
-  margin-bottom: 18px;
+
+  color:
+    var(--adssu-green-800);
+
+  background:
+    var(--adssu-green-100);
+
+  font-size: 13px;
+
+  font-weight: 800;
 }
 
 .yearbook__featuredContent h2 {
-  font-size: 42px;
-  color: #243b53;
-  margin-bottom: 12px;
+  margin: 0 0 18px;
+
+  color:
+    var(--adssu-green-950);
+
+  font-size:
+    clamp(42px, 4vw, 64px);
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
 }
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.yearbook__meta {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-bottom: 18px;
+}
+
+.yearbook__meta span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color:
+    var(--text-light);
+
+  font-size: 14px;
+
+  font-weight: 600;
+}
+
+.yearbook__meta svg {
+  color:
+    var(--adssu-green-700);
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   FEATURED PROGRAM
+========================================================= */
 
 .featured-program {
-  color: #64748b;
+  display: inline-flex;
+
+  align-items: center;
+
+  padding: 9px 15px;
+
+  margin: 0 0 20px;
+
+  border-radius: 10px;
+
+  background:
+    #eaf5ed;
+
+  color:
+    var(--adssu-green-800);
+
   font-size: 15px;
-  margin-bottom: 14px;
+
+  font-weight: 700;
 }
 
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
 .featured-description {
-  color: #6b7280;
-  line-height: 1.8;
-  max-width: 420px;
-  margin-bottom: 30px;
+  max-width: 650px;
+
+  margin: 0 0 35px;
+
+  color:
+    var(--text-light);
+
+  font-size: 16px;
+
+  line-height: 1.9;
 }
+
+
+/* =========================================================
+   CONTROLS
+========================================================= */
 
 .yearbook__controls {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
 }
 
 .circle-btn {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid #d1d5db;
-  background: white;
+  width: 50px;
+  height: 50px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
+
+  border:
+    1px solid #cfded4;
+
+  border-radius: 50%;
+
+  background: white;
+
+  color:
+    var(--adssu-green-800);
+
   cursor: pointer;
+
+  transition:
+    all 0.25s ease;
+
+  box-shadow:
+    var(--shadow-sm);
+}
+
+.circle-btn:hover {
+  color: white;
+
+  background:
+    var(--adssu-green-800);
+
+  border-color:
+    var(--adssu-green-800);
+
+  transform:
+    translateY(-2px);
+}
+
+.circle-btn svg {
+  font-size: 21px;
 }
 
 .open-btn {
-  border: none;
-  background: #270252;
-  color: white;
-  padding: 13px 22px;
-  border-radius: 999px;
+  min-height: 50px;
+
   display: flex;
+
   align-items: center;
+  justify-content: center;
+
   gap: 10px;
-  font-weight: 600;
+
+  padding: 0 27px;
+
+  border: none;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--adssu-green-950),
+      var(--adssu-green-700)
+    );
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
   cursor: pointer;
+
+  transition:
+    all 0.25s ease;
+
+  box-shadow:
+    0 8px 20px
+    rgba(7, 85, 45, 0.20);
 }
 
-/* STUDENTS */
+.open-btn:hover {
+  transform:
+    translateY(-3px);
+
+  box-shadow:
+    0 12px 28px
+    rgba(7, 85, 45, 0.28);
+}
+
+
+/* =========================================================
+   STUDENTS SECTION
+========================================================= */
 
 .yearbook__students {
   margin-top: 20px;
+
+  padding: 35px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 28px;
+
+  background: white;
+
+  box-shadow:
+    var(--shadow-sm);
 }
 
+
+/* =========================================================
+   STUDENT HEADER
+========================================================= */
+
 .yearbook__header {
-  margin-bottom: 20px;
+  display: flex;
+
+  align-items: flex-end;
+
+  justify-content: space-between;
+
+  gap: 30px;
+
+  margin-bottom: 30px;
+}
+
+.section-label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    var(--adssu-green-700);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
 }
 
 .yearbook__header h2 {
-  font-size: 20px;
-  margin-bottom: 18px;
-  color: #220157;
+  margin: 0 0 8px;
+
+  color:
+    var(--adssu-green-950);
+
+  font-size:
+    clamp(26px, 3vw, 38px);
+
+  line-height: 1.15;
+
+  font-weight: 800;
 }
 
-/* DEPARTMENT TABS */
+.yearbook__header p {
+  margin: 0;
+
+  color:
+    var(--text-light);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   STUDENT COUNT
+========================================================= */
+
+.yearbook__studentCount {
+  min-width: 105px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 15px 18px;
+
+  border:
+    1px solid #cfe1d5;
+
+  border-radius: 16px;
+
+  background:
+    var(--adssu-green-50);
+}
+
+.yearbook__studentCount strong {
+  color:
+    var(--adssu-green-900);
+
+  font-size: 27px;
+
+  line-height: 1;
+}
+
+.yearbook__studentCount span {
+  margin-top: 6px;
+
+  color:
+    var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.05em;
+}
+
+
+/* =========================================================
+   DEPARTMENT TABS
+========================================================= */
 
 .department-tabs {
   display: flex;
-  gap: 12px;
+
+  gap: 10px;
+
   flex-wrap: wrap;
+
+  margin-bottom: 25px;
 }
 
 .department-tabs button {
-  border: none;
-  background: transparent;
-  color: #6b7280;
-  font-size: 14px;
-  font-weight: 500;
+  border:
+    1px solid var(--border);
+
+  background: white;
+
+  color:
+    var(--text);
+
+  padding: 10px 16px;
+
+  border-radius: 999px;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
   cursor: pointer;
+
+  transition:
+    0.2s ease;
+}
+
+.department-tabs button:hover {
+  border-color:
+    var(--adssu-green-500);
+
+  color:
+    var(--adssu-green-800);
 }
 
 .department-tabs button.active {
-  background: #4f46e5;
+  border-color:
+    var(--adssu-green-800);
+
+  background:
+    var(--adssu-green-800);
+
   color: white;
-  padding: 8px 14px;
-  border-radius: 10px;
 }
 
-/* ACTIONS */
+
+/* =========================================================
+   SEARCH + FILTER
+========================================================= */
 
 .yearbook__actions {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 24px;
+  display: grid;
+
+  grid-template-columns:
+    1fr 280px;
+
+  gap: 18px;
+
+  margin-bottom: 30px;
 }
 
 .yearbook__search {
-  flex: 1;
-  height: 50px;
-  background: white;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
+  width: 100%;
+
+  height: 58px;
+
   display: flex;
+
   align-items: center;
-  padding: 0 16px;
-  gap: 12px;
+
+  gap: 14px;
+
+  padding: 0 20px;
+
+  box-sizing: border-box;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 15px;
+
+  background: white;
+
+  transition:
+    all 0.2s ease;
+}
+
+.yearbook__search:focus-within {
+  border-color:
+    var(--adssu-green-500);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(22, 160, 90, 0.08);
+}
+
+.yearbook__search svg {
+  flex-shrink: 0;
+
+  color:
+    var(--adssu-green-700);
+
+  font-size: 20px;
 }
 
 .yearbook__search input {
-  border: none;
-  outline: none;
   width: 100%;
-  font-size: 14px;
+
+  border: none;
+
+  outline: none;
+
+  background: transparent;
+
+  color:
+    var(--text-dark);
+
+  font-size: 15px;
+}
+
+.yearbook__search input::placeholder {
+  color:
+    #9aa69e;
 }
 
 .yearbook__filter {
-  width: 220px;
-  border-radius: 14px;
-  border: 1px solid #e5e7eb;
-  padding: 0 16px;
-  font-size: 14px;
+  width: 100%;
+
+  height: 58px;
+
+  padding: 0 18px;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 15px;
+
+  outline: none;
+
   background: white;
+
+  color:
+    var(--text);
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  cursor: pointer;
 }
 
-/* GRID */
+.yearbook__filter:focus {
+  border-color:
+    var(--adssu-green-500);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(22, 160, 90, 0.08);
+}
+
+
+/* =========================================================
+   STUDENT GRID
+   5 COLUMNS ON LARGE SCREENS
+========================================================= */
 
 .yearbook__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+
+  /*
+    LARGE SCREEN:
+    5 students per row
+  */
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 24px;
 }
 
-/* CARD */
+
+/* =========================================================
+   STUDENT CARD
+========================================================= */
 
 .yearbook__card {
-  background: white;
-  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: 0.3s;
+
+  background: white;
+
+  border:
+    1px solid var(--border);
+
+  border-radius: 20px;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .yearbook__card:hover {
-  transform: translateY(-4px);
+  transform:
+    translateY(-7px);
+
+  border-color:
+    #b9d2c1;
+
+  box-shadow:
+    var(--shadow-lg);
 }
+
+
+/* =========================================================
+   STUDENT IMAGE
+========================================================= */
 
 .yearbook__image {
   width: 100%;
-  height: 220px;
+
+  /*
+    Portrait student photo area.
+    This keeps the student's complete face/body
+    visible in a consistent gallery shape.
+  */
+  aspect-ratio: 4 / 5;
+
+  height: auto;
+
+  overflow: hidden;
+
+  background:
+    #eaf2ed;
+
+  position: relative;
 }
 
 .yearbook__image img {
   width: 100%;
+
   height: 100%;
+
+  display: block;
+
+  /*
+    cover fills the complete card area.
+  */
   object-fit: cover;
+
+  object-position: center;
+
+  transition:
+    transform 0.45s ease;
 }
 
+.yearbook__card:hover
+.yearbook__image img {
+  transform:
+    scale(1.05);
+}
+
+
+/* =========================================================
+   IMAGE FALLBACK
+========================================================= */
+
+.yearbook__imageFallback {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--adssu-green-950),
+      var(--adssu-green-600)
+    );
+
+  color: white;
+
+  font-size: 48px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================================================
+   IMAGE ERROR
+========================================================= */
+
+.yearbook__image.image-error {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background:
+    #f1f5f3;
+}
+
+.yearbook__image.image-error::after {
+  content:
+    "Photo unavailable";
+
+  color:
+    #8b9991;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   CARD INFO
+========================================================= */
+
 .yearbook__info {
-  padding: 18px;
+  padding: 22px;
+}
+
+.student-card__top {
+  display: flex;
+
+  justify-content: flex-end;
+
+  height: 0;
+
+  position: relative;
+
+  top: -5px;
 }
 
 .yearbook__info h3 {
-  font-size: 18px;
-  color: #111827;
-  margin-bottom: 4px;
+  margin: 0 0 7px;
+
+  color:
+    var(--text-dark);
+
+  font-size: 20px;
+
+  line-height: 1.3;
+
+  font-weight: 800;
 }
+
+
+/* =========================================================
+   INITIALS
+========================================================= */
 
 .student-initials {
-  display: block;
-  color: #94a3b8;
-  font-size: 13px;
-  margin-bottom: 10px;
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  min-width: 34px;
+
+  height: 32px;
+
+  padding: 0 9px;
+
+  box-sizing: border-box;
+
+  margin-bottom: 11px;
+
+  border-radius: 9px;
+
+  background:
+    var(--adssu-green-100);
+
+  color:
+    var(--adssu-green-800);
+
+  font-size: 11px;
+
+  font-weight: 800;
 }
 
-.yearbook__motto {
-  font-size: 14px;
-  color: #6b7280;
-  line-height: 1.6;
-  margin-bottom: 16px;
+
+/* =========================================================
+   NICKNAME
+========================================================= */
+
+.student-nickname {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color:
+    #89968e;
+
+  font-size: 13px;
+
+  font-style: italic;
 }
+
+
+/* =========================================================
+   MOTTO
+========================================================= */
+
+.yearbook__motto {
+  min-height: 46px;
+
+  margin: 0 0 18px;
+
+  color:
+    var(--text-light);
+
+  font-size: 14px;
+
+  line-height: 1.65;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 2;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PROGRAM
+========================================================= */
 
 .yearbook__program {
   display: inline-flex;
+
   align-items: center;
-  gap: 8px;
-  background: #f3f4f6;
-  color: #374151;
-  padding: 8px 12px;
+
+  max-width: 100%;
+
+  box-sizing: border-box;
+
+  padding: 9px 13px;
+
   border-radius: 10px;
-  font-size: 13px;
-  font-weight: 600;
+
+  background:
+    #f0f5f1;
+
+  color:
+    var(--adssu-green-800);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
 }
 
-/* RESPONSIVE */
 
-@media (max-width: 1100px) {
+/* =========================================================
+   LOADING / EMPTY / ERROR
+========================================================= */
+
+.yearbook__state {
+  min-height: 55vh;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 60px 30px;
+
+  box-sizing: border-box;
+}
+
+.yearbook__state h2 {
+  margin: 20px 0 8px;
+
+  color:
+    var(--adssu-green-950);
+
+  font-size: 27px;
+}
+
+.yearbook__state p {
+  max-width: 600px;
+
+  margin: 0 0 22px;
+
+  color:
+    var(--text-light);
+
+  font-size: 14px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   LOADER
+========================================================= */
+
+.yearbook__loader {
+  width: 42px;
+  height: 42px;
+
+  border:
+    4px solid #dce9e0;
+
+  border-top-color:
+    var(--adssu-green-700);
+
+  border-radius: 50%;
+
+  animation:
+    yearbookSpin 0.75s linear infinite;
+}
+
+@keyframes yearbookSpin {
+  to {
+    transform:
+      rotate(360deg);
+  }
+}
+
+
+/* =========================================================
+   EMPTY ICON
+========================================================= */
+
+.yearbook__emptyIcon {
+  width: 80px;
+  height: 80px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 22px;
+
+  background:
+    var(--adssu-green-100);
+
+  color:
+    var(--adssu-green-800);
+
+  font-size: 34px;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.yearbook__state--error > svg {
+  width: 48px;
+  height: 48px;
+
+  color:
+    #dc2626;
+}
+
+
+/* =========================================================
+   STUDENT LOADING
+========================================================= */
+
+.yearbook__studentLoading {
+  min-height: 280px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 16px;
+
+  color:
+    var(--text-light);
+
+  font-size: 14px;
+}
+
+
+/* =========================================================
+   NO STUDENTS
+========================================================= */
+
+.yearbook__noStudents {
+  min-height: 300px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  text-align: center;
+
+  border:
+    2px dashed #cbdacf;
+
+  border-radius: 20px;
+
+  background:
+    var(--surface-soft);
+}
+
+.yearbook__noStudents > svg {
+  margin-bottom: 13px;
+
+  color:
+    #8fa197;
+
+  font-size: 38px;
+}
+
+.yearbook__noStudents h3 {
+  margin: 0 0 8px;
+
+  color:
+    var(--text);
+
+  font-size: 19px;
+}
+
+.yearbook__noStudents p {
+  margin: 0;
+
+  color:
+    var(--text-light);
+
+  font-size: 13px;
+}
+
+/* =========================================================
+   STUDENT CARD HOVER PROFILE
+   ========================================================= */
+
+.yearbook__card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.yearbook__card:hover {
+  transform: translateY(-7px);
+  border-color: #b9d2c1;
+  box-shadow:
+    0 22px 45px rgba(7, 59, 42, 0.18),
+    0 8px 18px rgba(7, 59, 42, 0.10);
+}
+
+.student-card__nickname {
+  display: block;
+  margin-top: 5px;
+  color: #087443;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.student-card__motto {
+  margin: 8px auto 0;
+  max-width: 90%;
+  color: #667085;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  font-style: italic;
+
+  /* Prevent very long mottos from making cards different heights */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Keep the card information neat */
+.yearbook__info h3 {
+  margin-bottom: 3px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .student-card__nickname {
+    font-size: 0.85rem;
+  }
+
+  .student-card__motto {
+    font-size: 0.75rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* =========================================================
+   IMAGE CONTAINER
+   ========================================================= */
+
+.yearbook__image {
+  position: relative;
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* =========================================================
+   STUDENT IMAGE
+   ========================================================= */
+
+.yearbook__image img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s ease;
+}
+
+.yearbook__card:hover .yearbook__image img {
+  transform: scale(1.07);
+  filter: brightness(0.62);
+}
+
+
+/* =========================================================
+   FALLBACK INITIALS
+   ========================================================= */
+
+.yearbook__imageFallback {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition:
+    transform 0.5s ease,
+    filter 0.4s ease;
+}
+
+.yearbook__card:hover .yearbook__imageFallback {
+  transform: scale(1.06);
+  filter: brightness(0.65);
+}
+
+
+/* =========================================================
+   HOVER OVERLAY
+   ========================================================= */
+
+.student-hover {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 10;
+
+  display: flex;
+  align-items: flex-end;
+
+  padding: 24px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(3, 38, 27, 0.98) 0%,
+      rgba(5, 66, 46, 0.88) 38%,
+      rgba(7, 84, 60, 0.48) 65%,
+      rgba(7, 84, 60, 0.05) 100%
+    );
+
+  opacity: 0;
+  visibility: hidden;
+
+  transform: translateY(15px);
+
+  pointer-events: none;
+
+  transition:
+    opacity 0.35s ease,
+    visibility 0.35s ease,
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+
+/* SHOW HOVER */
+
+.yearbook__card:hover .student-hover {
+  opacity: 1;
+  visibility: visible;
+
+  transform: translateY(0);
+}
+
+
+/* =========================================================
+   HOVER CONTENT
+   ========================================================= */
+
+.student-hover__content {
+  width: 100%;
+
+  color: #ffffff;
+
+  transform: translateY(22px);
+
+  opacity: 0;
+
+  transition:
+    transform 0.4s
+      cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.3s ease;
+}
+
+.yearbook__card:hover
+.student-hover__content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.student-hover__label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: rgba(255, 255, 255, 0.72);
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   NAME
+   ========================================================= */
+
+.student-hover__content h3 {
+  margin: 0;
+
+  color: #ffffff;
+
+  font-size: 21px;
+  line-height: 1.15;
+
+  font-weight: 800;
+
+  letter-spacing: -0.02em;
+}
+
+
+/* =========================================================
+   NICKNAME
+   ========================================================= */
+
+.student-hover__nickname {
+  display: block;
+
+  margin-top: 5px;
+
+  color: rgba(255, 255, 255, 0.78);
+
+  font-size: 12px;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   PROGRAM
+   ========================================================= */
+
+.student-hover__program {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 6px;
+
+  margin-top: 12px;
+
+  padding: 6px 10px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.20);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.13);
+
+  color: #ffffff;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.student-hover__program svg {
+  width: 13px;
+  height: 13px;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   MOTTO
+   ========================================================= */
+
+.student-hover__motto {
+  margin: 12px 0 0;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  font-size: 12px;
+  line-height: 1.5;
+
+  font-style: italic;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   VIEW PROFILE
+   ========================================================= */
+
+.student-hover__button {
+  display: inline-flex;
+
+  align-items: center;
+  gap: 7px;
+
+  margin-top: 16px;
+
+  color: #ffffff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.02em;
+
+  transition:
+    gap 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.yearbook__card:hover
+.student-hover__button {
+  gap: 12px;
+}
+
+.student-hover__button svg {
+  width: 14px;
+  height: 14px;
+}
+
+
+/* =========================================================
+   CARD KEYBOARD FOCUS
+   ========================================================= */
+
+.yearbook__card:focus-visible {
+  outline: 3px solid rgba(9, 107, 76, 0.30);
+
+  outline-offset: 4px;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .student-hover {
+    padding: 18px;
+  }
+
+  .student-hover__content h3 {
+    font-size: 18px;
+  }
+
+  .student-hover__motto {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .student-hover {
+    padding: 16px;
+  }
+
+  .student-hover__label {
+    font-size: 8px;
+  }
+
+  .student-hover__content h3 {
+    font-size: 16px;
+  }
+
+  .student-hover__nickname {
+    font-size: 11px;
+  }
+
+  .student-hover__program {
+    margin-top: 8px;
+
+    padding: 5px 8px;
+
+    font-size: 9px;
+  }
+
+  .student-hover__motto {
+    margin-top: 8px;
+
+    font-size: 10px;
+
+    -webkit-line-clamp: 2;
+  }
+
+  .student-hover__button {
+    margin-top: 10px;
+
+    font-size: 10px;
+  }
+
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+/*
+   Phones/tablets don't have real mouse hover.
+   The card can still be clicked to open the modal.
+*/
+
+@media (hover: none) and (pointer: coarse) {
+
+  .yearbook__card:hover {
+    transform: none;
+
+    box-shadow: none;
+  }
+
+  .yearbook__card:hover
+  .yearbook__image img {
+    transform: none;
+    filter: none;
+  }
+
+  .student-hover {
+    display: none;
+  }
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1500px+
+   5 COLUMNS
+========================================================= */
+
+@media (min-width: 1500px) {
+
+  .yearbook {
+    max-width: 1900px;
+
+    padding-left: 55px;
+    padding-right: 55px;
+  }
+
   .yearbook__featured {
-    flex-direction: column;
+    grid-template-columns:
+      minmax(440px, 46%)
+      1px
+      minmax(0, 1fr);
+
+    padding: 45px;
+
+    gap: 45px;
+  }
+
+  .yearbook__cover {
+    max-width: 560px;
+  }
+
+  .yearbook__divider {
+    height: 550px;
+  }
+
+  /*
+    5 STUDENTS PER ROW
+  */
+  .yearbook__grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+
+    gap: 28px;
+  }
+}
+
+
+/* =========================================================
+   1300px
+   5 COLUMNS
+========================================================= */
+
+@media (max-width: 1499px) and (min-width: 1201px) {
+
+  .yearbook__grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .yearbook__info {
+    padding: 18px;
+  }
+
+  .yearbook__info h3 {
+    font-size: 17px;
+  }
+
+  .yearbook__motto {
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================================
+   1200px
+   4 COLUMNS
+========================================================= */
+
+@media (max-width: 1200px) {
+
+  .yearbook {
+    padding-left: 25px;
+    padding-right: 25px;
+  }
+
+  .yearbook__featured {
+    grid-template-columns:
+      minmax(330px, 45%)
+      1px
+      minmax(0, 1fr);
+
+    gap: 30px;
+
+    padding: 30px;
+  }
+
+  .yearbook__cover {
+    max-width: 480px;
+  }
+
+  /*
+    4 STUDENTS PER ROW
+  */
+  .yearbook__grid {
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .yearbook__info {
+    padding: 18px;
+  }
+}
+
+
+/* =========================================================
+   1000px
+   3 COLUMNS
+========================================================= */
+
+@media (max-width: 1000px) {
+
+  .yearbook__featured {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+
+    min-height: auto;
   }
 
   .yearbook__divider {
@@ -285,60 +2024,368 @@
   }
 
   .yearbook__cover {
-    width: 100%;
-    height: 420px;
+    width: min(100%, 500px);
+
+    max-width: 500px;
   }
 
   .yearbook__featuredContent {
-    width: 100%;
+    padding:
+      10px 10px 20px;
+  }
+
+  /*
+    3 STUDENTS PER ROW
+  */
+  .yearbook__grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
   }
 }
 
+
+/* =========================================================
+   768px TABLET
+   2 COLUMNS
+========================================================= */
+
 @media (max-width: 768px) {
+
+  .yearbook {
+    padding:
+      18px 16px 40px;
+  }
+
+  .yearbook__hero {
+    padding:
+      40px 18px 45px;
+
+    border-radius: 22px;
+
+    margin-bottom: 25px;
+  }
+
+  .yearbook__hero h1 {
+    font-size: 40px;
+  }
+
+  .yearbook__hero p {
+    font-size: 14px;
+  }
+
+  .yearbook__featured {
+    padding: 25px;
+
+    border-radius: 22px;
+  }
+
+  .yearbook__cover {
+    width: min(100%, 430px);
+
+    border-radius: 18px;
+  }
+
+  .yearbook__featuredContent h2 {
+    font-size: 40px;
+  }
+
+  .featured-description {
+    font-size: 14px;
+  }
+
+  .yearbook__students {
+    padding:
+      25px 20px;
+
+    border-radius: 22px;
+  }
+
   .yearbook__actions {
+    grid-template-columns: 1fr;
+  }
+
+  /*
+    2 STUDENTS PER ROW
+  */
+  .yearbook__grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+  .yearbook__image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .yearbook__header {
+    align-items: flex-start;
+
     flex-direction: column;
   }
 
-  .yearbook__filter {
+  .yearbook__studentCount {
+    flex-direction: row;
+
+    gap: 8px;
+
+    align-self: flex-start;
+  }
+
+  .yearbook__studentCount span {
+    margin-top: 0;
+  }
+}
+
+
+/* =========================================================
+   600px
+   1 COLUMN
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .yearbook {
+    padding:
+      12px 10px 35px;
+  }
+
+  .yearbook__hero {
+    padding:
+      35px 15px 40px;
+
+    border-radius: 18px;
+  }
+
+  .yearbook__hero h1 {
+    font-size: 34px;
+  }
+
+  .yearbook__hero p {
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  .yearbook__badge {
+    font-size: 12px;
+
+    padding:
+      8px 14px;
+  }
+
+  .yearbook__tabs {
+    margin-bottom: 18px;
+  }
+
+  .yearbook__tabs button {
+    padding:
+      11px 17px;
+
+    font-size: 12px;
+  }
+
+  .yearbook__featured {
+    padding: 18px;
+
+    border-radius: 18px;
+  }
+
+  .yearbook__cover {
     width: 100%;
-    height: 50px;
+
+    max-width: 380px;
+
+    border-radius: 15px;
+  }
+
+  .yearbook__featuredContent {
+    padding: 5px;
   }
 
   .yearbook__featuredContent h2 {
     font-size: 32px;
   }
 
+  .featured-program {
+    font-size: 13px;
+  }
+
+  .featured-description {
+    font-size: 13px;
+
+    margin-bottom: 25px;
+  }
+
+  .yearbook__controls {
+    display: grid;
+
+    grid-template-columns:
+      46px
+      1fr
+      46px;
+
+    width: 100%;
+  }
+
+  .circle-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .open-btn {
+    min-height: 46px;
+
+    padding: 0 10px;
+
+    font-size: 12px;
+  }
+
+  .yearbook__students {
+    padding:
+      20px 15px;
+
+    border-radius: 18px;
+  }
+
   .yearbook__header h2 {
-    font-size: 28px;
+    font-size: 26px;
+  }
+
+  /*
+    1 STUDENT PER ROW
+  */
+  .yearbook__grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .yearbook__image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .yearbook__info {
+    padding: 18px;
   }
 }
 
-/* HERO */
-.yearbook__hero {
-  text-align: center;
-  margin-bottom: 50px;
+
+/* =========================================================
+   480px
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .yearbook {
+    padding:
+      8px 7px 30px;
+  }
+
+  .yearbook__hero {
+    padding:
+      30px 14px 35px;
+
+    margin-bottom: 20px;
+  }
+
+  .yearbook__hero h1 {
+    font-size: 29px;
+
+    letter-spacing:
+      -0.025em;
+  }
+
+  .yearbook__hero p {
+    font-size: 12px;
+  }
+
+  .yearbook__featured {
+    padding: 14px;
+  }
+
+  .yearbook__cover {
+    width: 100%;
+
+    max-width: 340px;
+  }
+
+  .yearbook__featuredContent h2 {
+    font-size: 28px;
+  }
+
+  .small-label {
+    font-size: 11px;
+
+    padding:
+      8px 12px;
+  }
+
+  .featured-description {
+    line-height: 1.7;
+  }
+
+  .yearbook__students {
+    padding:
+      17px 12px;
+  }
+
+  .yearbook__header h2 {
+    font-size: 23px;
+  }
+
+  .yearbook__image {
+    aspect-ratio: 4 / 5;
+  }
+
+  .yearbook__info h3 {
+    font-size: 18px;
+  }
 }
 
 
+/* =========================================================
+   380px
+========================================================= */
 
-.yearbook__badge {
-  display: inline-block;
-  padding: 6px 12px;
+@media (max-width: 380px) {
 
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  font-size: 30px;
-  margin-bottom: 5px;
-  color: #28065f;
+  .yearbook__hero h1 {
+    font-size: 26px;
+  }
+
+  .yearbook__cover {
+    width: 100%;
+
+    max-width: 300px;
+  }
+
+  .yearbook__featuredContent h2 {
+    font-size: 25px;
+  }
+
+  .yearbook__controls {
+    grid-template-columns:
+      40px
+      1fr
+      40px;
+  }
+
+  .circle-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .open-btn {
+    min-height: 40px;
+
+    font-size: 11px;
+  }
+
+  .yearbook__image {
+    aspect-ratio: 4 / 5;
+  }
 }
 
-.yearbook__hero h1 {
-  font-size: 40px;
-  margin-bottom: 15px;
-}
-
-.yearbook__hero p {
-  opacity: 0.7;
-  max-width: 600px;
-  margin: auto;
-}

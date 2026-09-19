@@ -1,0 +1,177 @@
+.publish-page {
+  padding: 30px;
+  background: #f8fafc;
+  min-height: 100vh;
+}
+
+.publish-header {
+  margin-bottom: 35px;
+}
+
+.publish-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.publish-header p {
+  color: #64748b;
+  margin-top: 5px;
+}
+
+.section-title {
+  margin-bottom: 18px;
+  color: #334155;
+  font-size: 22px;
+}
+
+.yearbook-grid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(240px, 1fr)
+  );
+  gap: 22px;
+  margin-bottom: 50px;
+}
+
+.yearbook-card {
+  background: white;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  transition: 0.3s;
+}
+
+.yearbook-card:hover {
+  transform: translateY(-4px);
+}
+
+.thumbnail {
+  height: 300px;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.loading-thumb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  font-size: 14px;
+  text-align: center;
+  padding: 1rem;
+}
+
+.card-body {
+  padding: 18px;
+}
+
+.card-body h3 {
+  margin-bottom: 12px;
+  color: #1e293b;
+}
+
+.draft-badge {
+  display: inline-block;
+  background: #fff7ed;
+  color: #ea580c;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.published-badge {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.publish-btn {
+  width: 100%;
+  margin-top: 15px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  padding: 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.publish-btn:hover {
+  background: #1d4ed8;
+}
+
+.empty-thumbnail {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 40px;
+}
+
+.empty-thumbnail span {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  width: 80%;
+  height: 85%;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pages-preview-scroll {
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 10px;
+}
+
+.page-preview-box {
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.page-thumb-img {
+  width: 100%;
+  border-radius: 6px;
+}

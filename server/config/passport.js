@@ -1,6 +1,9 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const db = require("./db");
 const allowedDomain = "@adssu.edu.ph";
+const axios = require("axios");
+const cloudinary = require("./cloudinary");
+const streamifier = require("streamifier");
 
 
 module.exports = function(passport) {
@@ -21,7 +24,42 @@ module.exports = function(passport) {
           const googleId = profile.id;
           const fullName = profile.displayName;
           const email = profile.emails[0].value;
-          const profilePic = profile.photos[0].value;
+          const googlePhoto = profile.photos[0].value;
+
+let profilePic = googlePhoto;
+
+try {
+
+    const response = await axios.get(googlePhoto, {
+        responseType: "arraybuffer",
+    });
+
+    const uploadResult = await new Promise((resolve, reject) => {
+
+        const uploadStream = cloudinary.uploader.upload_stream(
+            {
+                folder: "profile_pictures",
+            },
+            (error, result) => {
+                if (error) return reject(error);
+                resolve(result);
+            }
+        );
+
+        streamifier.createReadStream(response.data).pipe(uploadStream);
+
+    });
+
+    profilePic = uploadResult.secure_url;
+
+    console.log("Cloudinary photo:", profilePic);
+
+} catch (err) {
+
+    console.log("Failed to upload Google image to Cloudinary");
+    console.log(err.message);
+
+}
 
           /*
              SCHOOL EMAIL VALIDATION
@@ -73,14 +111,23 @@ db.query(
           return done(null, userResult[0]);
         }
 
-        /*
-           INSERT NEW USER
-        */
+/*
+   INSERT NEW USER
+*/
 
- db.query(
+db.query(
   `INSERT INTO users
-  (google_id, full_name, email, role, department_program, batch, profile_pic)
-  VALUES (?, ?, ?, ?, ?, ?, ?)`,
+  (
+    google_id,
+    full_name,
+    email,
+    role,
+    department_program,
+    batch,
+    batch_name,
+    profile_pic
+  )
+  VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
   [
     googleId,
     fullName,
@@ -88,37 +135,40 @@ db.query(
     registrarUser.role,
     registrarUser.department_program,
     registrarUser.batch,
+    registrarUser.batch_name,
     profilePic,
   ],
 
-          (err, insertResult) => {
+  (err, insertResult) => {
 
-            if (err) {
-              return done(err, null);
-            }
+    if (err) {
+      return done(err, null);
+    }
 
-            const newUser = {
-              id: insertResult.insertId,
-              google_id: googleId,
-              full_name: fullName,
-              email,
-              role: registrarUser.role,
-              profile_pic: profilePic,
-            };
+    const newUser = {
+      id: insertResult.insertId,
+      google_id: googleId,
+      full_name: fullName,
+      email,
+      role: registrarUser.role,
+      department_program: registrarUser.department_program,
+      batch: registrarUser.batch,
+      batch_name: registrarUser.batch_name,
+      profile_pic: profilePic,
+    };
 
-            return done(null, newUser);
-          }
-        );
+    return done(null, newUser);
+  }
+);
       }
     );
   }
 );
 
-        } catch (error) {
-
-          console.log(error);
-
-        }
+} catch (error) {
+  console.error("Google authentication error:", error);
+  return done(error, null);
+}
       }
     )
   );

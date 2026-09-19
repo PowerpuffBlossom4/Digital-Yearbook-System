@@ -1,204 +1,542 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+
+import {
+  FiUsers,
+  FiUserCheck,
+  FiSearch,
+  FiFilter,
+  FiMail,
+  FiChevronDown,
+} from "react-icons/fi";
+
 import "./studentsFaculty.css";
+
+axios.defaults.withCredentials = true;
 
 function StudentsFaculty() {
   const [people, setPeople] = useState([]);
   const [search, setSearch] = useState("");
   const [filterRole, setFilterRole] = useState("All");
-
-
-const [showModal, setShowModal] = useState(false);
-
-const [formData, setFormData] = useState({
-  full_name: "",
-  email: "",
-  department_program: "",
-  role: "Student",
-});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/admin/users")
-      .then((res) => setPeople(res.data))
-      .catch((err) => console.log(err));
+    fetchUsers();
   }, []);
 
-const filtered = people.filter((p) => {
-  const matchSearch =
-    p.full_name?.toLowerCase().includes(search.toLowerCase()) ||
-    p.email?.toLowerCase().includes(search.toLowerCase());
+  const fetchUsers = async () => {
+    try {
+      setLoading(true);
 
-  const matchRole =
-    filterRole === "All"
-      ? true
-      : p.role?.toLowerCase() === filterRole.toLowerCase();
+      const res = await axios.get(
+        "http://localhost:5000/api/admin/users",
+        {
+          withCredentials: true,
+        }
+      );
 
-  return matchSearch && matchRole;
-});
+      console.log("Users:", res.data);
 
-const handleChange = (e) => {
-  setFormData({ ...formData, [e.target.name]: e.target.value });
-};
+      setPeople(res.data);
+    } catch (err) {
+      console.error(
+        "Failed to fetch users:",
+        err
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const filtered = useMemo(() => {
+    return people.filter((person) => {
+      const searchValue = search.toLowerCase().trim();
 
-  try {
-    const res = await axios.post(
-      "http://localhost:5000/api/admin/users",
-      formData
-    );
+      const matchSearch =
+        person.full_name
+          ?.toLowerCase()
+          .includes(searchValue) ||
+        person.email
+          ?.toLowerCase()
+          .includes(searchValue) ||
+        person.department_program
+          ?.toLowerCase()
+          .includes(searchValue);
 
-    setPeople([...people, res.data]); // instantly update UI
-    setShowModal(false);
+      const matchRole =
+        filterRole === "All"
+          ? true
+          : person.role?.toLowerCase() ===
+            filterRole.toLowerCase();
 
-    setFormData({
-      full_name: "",
-      email: "",
-      department_program: "",
-      role: "Student",
+      return matchSearch && matchRole;
     });
-  } catch (err) {
-    console.log(err);
-  }
-};
+  }, [people, search, filterRole]);
+
+  const studentCount = people.filter(
+    (person) =>
+      person.role?.toLowerCase() === "student"
+  ).length;
+
+  const facultyCount = people.filter(
+    (person) =>
+      person.role?.toLowerCase() === "faculty"
+  ).length;
+
+  const getInitials = (name) => {
+    if (!name) return "U";
+
+    return name
+      .split(" ")
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((word) => word[0])
+      .join("")
+      .toUpperCase();
+  };
+
+  const getProfileImage = (profilePic) => {
+    if (!profilePic) return null;
+
+    if (
+      profilePic.startsWith("http://") ||
+      profilePic.startsWith("https://")
+    ) {
+      return profilePic;
+    }
+
+    return `http://localhost:5000${
+      profilePic.startsWith("/")
+        ? profilePic
+        : `/${profilePic}`
+    }`;
+  };
 
   return (
-  <div className="sf-container">
+    <div className="sf-container">
 
-    {/* HEADER */}
-    <div className="sf-header">
-      <div>
-        <h2>Students & Faculty</h2>
-        <p>Manage everyone featured in the yearbook.</p>
-      </div>
+      {/* =========================================
+          PAGE HEADER
+      ========================================== */}
 
-      <button className="add-btn" onClick={() => setShowModal(true)}>
-  + Add Person
-</button>
-    </div>
+      <header className="sf-header">
 
-    {/* SEARCH + FILTER */}
-    <div className="card-toolbar">
+        <div className="sf-header-left">
 
-      <input
-        type="text"
-        placeholder="Search name or email..."
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+          <div className="sf-header-icon">
+            <FiUsers />
+          </div>
 
-      <select
-        value={filterRole}
-        onChange={(e) => setFilterRole(e.target.value)}
-      >
-        <option value="All">All Roles</option>
-        <option value="Student">Student</option>
-        <option value="Faculty">Faculty</option>
-      </select>
-
-      <div className="result-count">
-        {filtered.length} users found
-      </div>
-
-    </div>
-
-   
- {/* TABLE */}
-<div className="sf-table-wrapper">
-  <table className="sf-table">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Department/Program</th>
-        <th>Role</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {filtered.map((p) => (
-        <tr key={p.id}>
-
-          <td className="name-cell">
-            <div className="avatar">
-              {p.full_name?.split(" ").map(n => n[0]).join("")}
-            </div>
-            <span>{p.full_name}</span>
-          </td>
-
-          
-          <td className="muted">{p.email}</td>
-          <td className="muted">{p.department_program}</td>
-
-          <td>
-            <span className={`role-pill ${p.role?.toLowerCase()}`}>
-              {p.role}
+          <div>
+            <span className="sf-eyebrow">
+              USER MANAGEMENT
             </span>
-          </td>
 
-        </tr>
-      ))}
-    </tbody>
-  </table>
+            <h1>
+              Students & Faculty
+            </h1>
 
-    </div>
+            <p>
+              Manage everyone featured in the
+              ADSSU digital yearbook.
+            </p>
+          </div>
 
-    {showModal && (
-  <div className="modal-overlay" onClick={() => setShowModal(false)}>
-    <div className="modal" onClick={(e) => e.stopPropagation()}>
-
-      <h3>Add Person</h3>
-
-      <form onSubmit={handleSubmit} className="modal-form">
-
-        <input
-          name="full_name"
-          placeholder="Full Name"
-          value={formData.full_name}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-
-        <input
-          name="department_program"
-          placeholder="Department/Program"
-          value={formData.department_program}
-          onChange={handleChange}
-          required
-        />
-
-        <select name="role" value={formData.role} onChange={handleChange}>
-          <option value="Student">Student</option>
-          <option value="Faculty">Faculty</option>
-        </select>
-
-        <div className="modal-actions">
-          <button type="button" onClick={() => setShowModal(false)}>
-            Cancel
-          </button>
-          <button type="submit">Save</button>
         </div>
 
-      </form>
+        <div className="sf-header-count">
+
+          <strong>
+            {people.length}
+          </strong>
+
+          <span>
+            Total Users
+          </span>
+
+        </div>
+
+      </header>
+
+      {/* =========================================
+          SUMMARY
+      ========================================== */}
+
+      <section className="sf-summary">
+
+        <div className="sf-summary-card">
+
+          <div className="sf-summary-icon students">
+            <FiUsers />
+          </div>
+
+          <div>
+            <span>
+              Students
+            </span>
+
+            <strong>
+              {studentCount.toLocaleString()}
+            </strong>
+          </div>
+
+        </div>
+
+        <div className="sf-summary-card">
+
+          <div className="sf-summary-icon faculty">
+            <FiUserCheck />
+          </div>
+
+          <div>
+            <span>
+              Faculty
+            </span>
+
+            <strong>
+              {facultyCount.toLocaleString()}
+            </strong>
+          </div>
+
+        </div>
+
+        <div className="sf-summary-card">
+
+          <div className="sf-summary-icon total">
+            <FiUsers />
+          </div>
+
+          <div>
+            <span>
+              All Users
+            </span>
+
+            <strong>
+              {people.length.toLocaleString()}
+            </strong>
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* =========================================
+          SEARCH + FILTER
+      ========================================== */}
+
+      <section className="sf-toolbar">
+
+        <div className="sf-search">
+
+          <FiSearch />
+
+          <input
+            type="text"
+            placeholder="Search name, email, or program..."
+            value={search}
+            onChange={(e) =>
+              setSearch(e.target.value)
+            }
+          />
+
+          {search && (
+            <button
+              type="button"
+              className="sf-clear"
+              onClick={() => setSearch("")}
+            >
+              ×
+            </button>
+          )}
+
+        </div>
+
+        <div className="sf-filter">
+
+          <FiFilter />
+
+          <select
+            value={filterRole}
+            onChange={(e) =>
+              setFilterRole(e.target.value)
+            }
+          >
+            <option value="All">
+              All Roles
+            </option>
+
+            <option value="Student">
+              Students
+            </option>
+
+            <option value="Faculty">
+              Faculty
+            </option>
+          </select>
+
+          <FiChevronDown
+            className="sf-filter-arrow"
+          />
+
+        </div>
+
+        <div className="sf-result-count">
+
+          <strong>
+            {filtered.length}
+          </strong>
+
+          <span>
+            {filtered.length === 1
+              ? "user"
+              : "users"}{" "}
+            found
+          </span>
+
+        </div>
+
+      </section>
+
+      {/* =========================================
+          USER TABLE
+      ========================================== */}
+
+      <section className="sf-table-card">
+
+        <div className="sf-table-header">
+
+          <div>
+            <span className="sf-table-eyebrow">
+              DIRECTORY
+            </span>
+
+            <h2>
+              User Directory
+            </h2>
+          </div>
+
+          <span className="sf-table-total">
+            {filtered.length} records
+          </span>
+
+        </div>
+
+        <div className="sf-table-wrapper">
+
+          <table className="sf-table">
+
+            <thead>
+              <tr>
+                <th>
+                  NAME
+                </th>
+
+                <th>
+                  EMAIL
+                </th>
+
+                <th>
+                  DEPARTMENT / PROGRAM
+                </th>
+
+                <th>
+                  ROLE
+                </th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              {loading ? (
+
+                <tr>
+                  <td
+                    colSpan="4"
+                    className="sf-loading"
+                  >
+                    <div className="loading-spinner" />
+                    <span>
+                      Loading users...
+                    </span>
+                  </td>
+                </tr>
+
+              ) : filtered.length > 0 ? (
+
+                filtered.map((person) => {
+
+                  const imageUrl =
+                    getProfileImage(
+                      person.profile_pic
+                    );
+
+                  const role =
+                    person.role?.toLowerCase();
+
+                  return (
+                    <tr key={person.id}>
+
+                      {/* NAME */}
+
+                      <td className="name-cell">
+
+                        <div className="sf-user">
+
+                          <div className="sf-avatar">
+
+                            {imageUrl ? (
+                              <img
+                                src={imageUrl}
+                                alt={
+                                  person.full_name ||
+                                  "User"
+                                }
+                                onError={(e) => {
+                                  e.currentTarget.style.display =
+                                    "none";
+
+                                  const fallback =
+                                    e.currentTarget
+                                      .parentElement
+                                      .querySelector(
+                                        ".sf-avatar-fallback"
+                                      );
+
+                                  if (fallback) {
+                                    fallback.style.display =
+                                      "flex";
+                                  }
+                                }}
+                              />
+                            ) : null}
+
+                            <div
+                              className="sf-avatar-fallback"
+                              style={{
+                                display: imageUrl
+                                  ? "none"
+                                  : "flex",
+                              }}
+                            >
+                              {getInitials(
+                                person.full_name
+                              )}
+                            </div>
+
+                          </div>
+
+                          <div className="sf-name">
+
+                            <strong>
+                              {person.full_name ||
+                                "Unnamed User"}
+                            </strong>
+
+                            <span>
+                              {role === "faculty"
+                                ? "Faculty Member"
+                                : "Student"}
+                            </span>
+
+                          </div>
+
+                        </div>
+
+                      </td>
+
+                      {/* EMAIL */}
+
+                      <td>
+
+                        <div className="sf-email">
+
+                          <FiMail />
+
+                          <span>
+                            {person.email ||
+                              "—"}
+                          </span>
+
+                        </div>
+
+                      </td>
+
+                      {/* DEPARTMENT */}
+
+                      <td>
+
+                        <span className="sf-department">
+                          {person.department_program ||
+                            "Not specified"}
+                        </span>
+
+                      </td>
+
+                      {/* ROLE */}
+
+                      <td>
+
+                        <span
+                          className={`sf-role ${
+                            role || "unknown"
+                          }`}
+                        >
+
+                          <span className="sf-role-dot" />
+
+                          {person.role
+                            ? person.role
+                                .charAt(0)
+                                .toUpperCase() +
+                              person.role.slice(1)
+                            : "Unknown"}
+
+                        </span>
+
+                      </td>
+
+                    </tr>
+                  );
+                })
+
+              ) : (
+
+                <tr>
+
+                  <td
+                    colSpan="4"
+                    className="sf-empty"
+                  >
+
+                    <div className="sf-empty-icon">
+                      <FiUsers />
+                    </div>
+
+                    <strong>
+                      No users found
+                    </strong>
+
+                    <span>
+                      Try changing your search
+                      or filter.
+                    </span>
+
+                  </td>
+
+                </tr>
+
+              )}
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
     </div>
-  </div>
-)}
-
-  </div>
-);
-
-    
-  
+  );
 }
 
 export default StudentsFaculty;

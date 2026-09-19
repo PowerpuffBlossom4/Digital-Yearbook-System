@@ -2,17 +2,18 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import LandingPage from "./LandingPage";
 import AdminLayout from "./AdminLayout";
-import AdminDashboard from "./Admin-Dashboard";
+import AdminDashboard from "./AdminDashboard";
 import StudentsFaculty from "./StudentsFaculty";
-import Photo from "./Photo";
 import MemoriesMessages from "./Memories-Messages";
 import DesignStudio from "./DesignStudio";
 import StudentLayout from "./StudenLayoutt";
 import StudentDashboard from "./StudentDashboard";
 import StudentProfile from "./StudentProfile";
-import PublicStudentProfile from "./PublicStudentProfile";
+
 import StudentMemories from "./StudentMemories";
 import StudentYearbook from "./StudentYearbook";
+import Yearbook from "./pages/admin/Yearbooks";
+import FlipbookViewer from "./pages/admin/FlipbookViewer";
 
 import FacultyLayout from "./FacultyLayout";
 
@@ -24,6 +25,7 @@ function App() {
 
         <Route path="/" element={<LandingPage />} />
 
+        
         {/* ADMIN LAYOUT WRAPPER */}
         <Route path="/admin" element={<AdminLayout />}>
 
@@ -31,11 +33,14 @@ function App() {
 
           <Route path="users" element={<StudentsFaculty />} />
 
-          <Route path="photo" element={<Photo />} />
+        
 
           <Route path="memories" element={<MemoriesMessages />} />
 
           <Route path="design" element={<DesignStudio />} />
+
+          <Route path="yearbooks" element={<Yearbook />} />
+
 
         </Route>
 
@@ -44,20 +49,28 @@ function App() {
   <Route index element={<StudentDashboard />} />
 
   <Route path="profile" element={<StudentProfile/>} />
+   {/* Other student's profile */}
+  <Route path=":studentId" element={<StudentProfile />} />
   <Route path="memories" element={<StudentMemories/>} />
   <Route path="yearbook" element={<StudentYearbook/>} />
   
 </Route>
 
-  <Route path="/student/:id" element={<PublicStudentProfile />} />  
+<Route path="/faculty" element={<FacultyLayout />}>
+  <Route index element={<StudentDashboard />} />
+</Route>
 
 <Route
-  path="/faculty"
-  element={<FacultyLayout />}
->
+  path="/admin/yearbook/view/:id"
+  element={<FlipbookViewer />}
+/>
 
+{/* STUDENT YEARBOOK FLIPBOOK */}
+<Route
+  path="/yearbooks/:id"
+  element={<FlipbookViewer />}
+/>
 
-</Route>
       </Routes>
 
     </BrowserRouter>

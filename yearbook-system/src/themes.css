@@ -1,0 +1,100 @@
+.themes-page {
+  padding: 20px;
+  background: #f7f8fc;
+  min-height: 100vh;
+}
+
+.themes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.themes-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.search-input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  width: 250px;
+  outline: none;
+}
+
+/* GRID */
+.themes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.theme-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* A4 PREVIEW BOX */
+.theme-thumb {
+  width: 100%;
+  aspect-ratio: 794 / 1123; /* 👈 A4 ratio */
+  background: #f3f3f3;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #ddd;
+}
+
+/* IMAGE FIT INSIDE A4 */
+.theme-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+background: white; /* or contain if you want full page view */
+}
+
+/* PLACEHOLDER */
+.placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  font-size: 14px;
+}
+/* INFO */
+.theme-info {
+  padding: 12px;
+}
+
+.theme-info h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.theme-info p {
+  font-size: 13px;
+  color: #666;
+  margin: 8px 0;
+}
+
+/* BUTTON */
+.theme-info button {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  cursor: pointer;
+}
+
+.theme-info button:hover {
+  background: #3730a3;
+}

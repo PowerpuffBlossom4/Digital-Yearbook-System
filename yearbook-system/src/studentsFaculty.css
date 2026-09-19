@@ -1,252 +1,1163 @@
+/* =========================================================
+   ADSSU STUDENTS & FACULTY
+   LARGE / READABLE ADMIN UI
+   GREEN MINIMALIST THEME
+   ========================================================= */
+
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
 .sf-container {
-  padding: 25px;
+  width: 100%;
+  min-width: 0;
+  color: #344b41;
+  font-family:
+    Inter,
+    "Segoe UI",
+    Roboto,
+    Arial,
+    sans-serif;
 }
 
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .sf-header {
+  min-height: 112px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 26px 30px;
+  margin-bottom: 20px;
+
+  background:
+    linear-gradient(
+      120deg,
+      #ffffff 0%,
+      #f4fbf7 100%
+    );
+
+  border: 1px solid #dfeae4;
+  border-radius: 18px;
+
+  box-shadow:
+    0 5px 22px rgba(16, 24, 20, 0.045);
+}
+
+.sf-header-left {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.sf-header-icon {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e9faf2,
+      #d2f3e1
+    );
+
+  color: #047857;
+
+  border: 1px solid #ccebdc;
+  border-radius: 15px;
+
+  font-size: 25px;
+}
+
+.sf-eyebrow,
+.sf-table-eyebrow {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #07815c;
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.35px;
+  text-transform: uppercase;
+}
+
+.sf-header h1 {
+  margin: 0;
+
+  color: #1d382e;
+
+  font-size: 30px;
+  line-height: 1.15;
+  font-weight: 800;
+
+  letter-spacing: -0.7px;
+}
+
+.sf-header p {
+  margin: 7px 0 0;
+
+  color: #7d8d85;
+
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.sf-header-count {
+  min-width: 110px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding-left: 20px;
+}
+
+.sf-header-count strong {
+  color: #087f5b;
+
+  font-size: 30px;
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+.sf-header-count span {
+  margin-top: 7px;
+
+  color: #93a19a;
+
+  font-size: 11px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+   ========================================================= */
+
+.sf-summary {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 16px;
+
   margin-bottom: 20px;
 }
 
-.add-btn {
-  background: #6c4cff;
-  color: white;
-  padding: 10px 14px;
+.sf-summary-card {
+  min-height: 100px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 18px 21px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1eae5;
+  border-radius: 15px;
+
+  box-shadow:
+    0 3px 14px rgba(16, 24, 20, 0.025);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.sf-summary-card:hover {
+  border-color: #c6e5d5;
+
+  box-shadow:
+    0 8px 25px rgba(6, 78, 59, 0.065);
+
+  transform: translateY(-2px);
+}
+
+.sf-summary-icon {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 12px;
+
+  font-size: 21px;
+}
+
+.sf-summary-icon.students {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+.sf-summary-icon.faculty {
+  background: #eef7ff;
+  color: #3579ae;
+}
+
+.sf-summary-icon.total {
+  background: #f4f2ff;
+  color: #6956b8;
+}
+
+.sf-summary-card div:last-child {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sf-summary-card span {
+  color: #7f8e87;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  line-height: 1.3;
+}
+
+.sf-summary-card strong {
+  margin-top: 5px;
+
+  color: #29483b;
+
+  font-size: 25px;
+  line-height: 1;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.sf-toolbar {
+  min-height: 72px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 12px 15px;
+  margin-bottom: 18px;
+
+  background: #ffffff;
+
+  border: 1px solid #e1eae5;
+  border-radius: 14px;
+
+  box-shadow:
+    0 3px 13px rgba(16, 24, 20, 0.025);
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.sf-search {
+  height: 48px;
+
+  flex: 1;
+  min-width: 250px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 0 15px;
+
+  background: #f8faf9;
+
+  border: 1px solid #e4ebe7;
+  border-radius: 11px;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.sf-search:focus-within {
+  background: #ffffff;
+
+  border-color: #9ed7bd;
+
+  box-shadow:
+    0 0 0 4px rgba(16, 185, 129, 0.075);
+}
+
+.sf-search > svg {
+  color: #8d9e95;
+
+  flex-shrink: 0;
+
+  font-size: 19px;
+}
+
+.sf-search input {
+  width: 100%;
+
   border: none;
-  border-radius: 8px;
+  outline: none;
+
+  background: transparent;
+
+  color: #344b41;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sf-search input::placeholder {
+  color: #9ba8a2;
+}
+
+.sf-clear {
+  width: 25px;
+  height: 25px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+
+  background: #e8efeb;
+  color: #71817a;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.sf-clear:hover {
+  background: #dce9e2;
+  color: #087f5b;
+}
+
+
+/* =========================================================
+   FILTER
+   ========================================================= */
+
+.sf-filter {
+  position: relative;
+
+  height: 48px;
+  min-width: 170px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0 14px;
+
+  background: #f8faf9;
+
+  border: 1px solid #e4ebe7;
+  border-radius: 11px;
+}
+
+.sf-filter > svg:first-child {
+  color: #84968d;
+
+  font-size: 17px;
+}
+
+.sf-filter select {
+  width: 100%;
+
+  appearance: none;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #53665d;
+
+  font-size: 12px;
+  font-weight: 600;
+
   cursor: pointer;
 }
 
-.sf-controls {
+.sf-filter-arrow {
+  color: #91a099;
+
+  pointer-events: none;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   RESULT COUNT
+   ========================================================= */
+
+.sf-result-count {
+  min-width: 110px;
+
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding-right: 7px;
 }
 
-.sf-controls input,
-.sf-controls select {
-  padding: 10px;
-  border: 1px solid #ddd;
+.sf-result-count strong {
+  color: #087f5b;
+
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sf-result-count span {
+  margin-top: 3px;
+
+  color: #96a39d;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   TABLE CARD
+   ========================================================= */
+
+.sf-table-card {
+  overflow: hidden;
+
+  background: #ffffff;
+
+  border: 1px solid #dfe9e4;
+  border-radius: 17px;
+
+  box-shadow:
+    0 4px 20px rgba(16, 24, 20, 0.035);
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.sf-table-header {
+  min-height: 84px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 19px 24px;
+
+  border-bottom: 1px solid #e9efec;
+}
+
+.sf-table-header h2 {
+  margin: 0;
+
+  color: #29473b;
+
+  font-size: 20px;
+  line-height: 1.2;
+
+  font-weight: 800;
+}
+
+.sf-table-total {
+  padding: 8px 13px;
+
+  background: #f1f7f4;
+
+  color: #718179;
+
+  border: 1px solid #e3ece7;
   border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 700;
 }
 
-/* TABLE WRAPPER (MINIMAL CARD FEEL) */
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
 .sf-table-wrapper {
-  background: white;
-  border-radius: 14px;
-  padding: 10px;
+  width: 100%;
+
+  overflow-x: auto;
 }
 
-/* TABLE */
 .sf-table {
   width: 100%;
+
   border-collapse: collapse;
+
+  table-layout: fixed;
+}
+
+.sf-table thead {
+  background: #f7faf8;
 }
 
 .sf-table th {
+  height: 52px;
+
+  padding: 0 21px;
+
+  color: #7d8d85;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.85px;
+
   text-align: left;
-  font-size: 12px;
-  color: #888;
-  padding: 12px;
-  font-weight: 500;
+
+  white-space: nowrap;
+}
+
+.sf-table th:nth-child(1) {
+  width: 29%;
+}
+
+.sf-table th:nth-child(2) {
+  width: 29%;
+}
+
+.sf-table th:nth-child(3) {
+  width: 26%;
+}
+
+.sf-table th:nth-child(4) {
+  width: 16%;
+}
+
+.sf-table tbody tr {
+  border-top: 1px solid #edf2ef;
+
+  transition:
+    background 0.18s ease;
+}
+
+.sf-table tbody tr:hover {
+  background: #f6fbf8;
 }
 
 .sf-table td {
-  padding: 14px 12px;
-  border-top: 1px solid #f1f1f1;
+  height: 88px;
+
+  padding: 13px 21px;
+
+  color: #566960;
+
+  font-size: 13px;
+
+  vertical-align: middle;
 }
 
-/* NAME CELL */
-.name-cell {
+
+/* =========================================================
+   USER
+   ========================================================= */
+
+.sf-user {
+  min-width: 0;
+
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-weight: 500;
-  font-size: 14px;
+
+  gap: 13px;
 }
 
-/* AVATAR */
-.avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 10px;
-  background: #6c4cff;
-  color: white;
+.sf-avatar {
+  position: relative;
+
+  width: 50px;
+  height: 50px;
+
+  flex-shrink: 0;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dff7eb,
+      #bdebd3
+    );
+
+  border-radius: 50%;
+}
+
+.sf-avatar img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.sf-avatar-fallback {
+  width: 100%;
+  height: 100%;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
-  font-size: 12px;
-}
 
-/* ROLE PILL (MINIMAL STYLE) */
-.role-pill {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  background: #f3f4f6;
-  color: #444;
-}
+  color: #087f5b;
 
-.role-pill.student {
-  background: #eef2ff;
-  color: #7646e5;
-}
-
-.role-pill.faculty {
-  background: #ecfeff;
-  color: #3f0888;
-}
-
-/* MUTED TEXT */
-.muted {
-  color: #777;
   font-size: 13px;
-}
-.card-toolbar {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin: 15px 0;
-  padding: 12px;
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(48, 8, 102, 0.05);
+  font-weight: 800;
 }
 
-.card-toolbar input,
-.card-toolbar select {
-  padding: 10px;
-  border: 1px solid #ddd;
+.sf-name {
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.sf-name strong {
+  color: #29453a;
+
+  font-size: 13px;
+  line-height: 1.3;
+
+  font-weight: 750;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sf-name span {
+  margin-top: 4px;
+
+  color: #95a29c;
+
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   EMAIL
+   ========================================================= */
+
+.sf-email {
+  min-width: 0;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+}
+
+.sf-email svg {
+  color: #8e9f96;
+
+  flex-shrink: 0;
+
+  font-size: 15px;
+}
+
+.sf-email span {
+  overflow: hidden;
+
+  color: #65776e;
+
+  font-size: 12px;
+  line-height: 1.4;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   DEPARTMENT
+   ========================================================= */
+
+.sf-department {
+  display: inline-block;
+
+  max-width: 100%;
+
+  padding: 8px 11px;
+
+  background: #f6f9f7;
+
+  color: #687a71;
+
+  border: 1px solid #e5ece8;
+  border-radius: 7px;
+
+  font-size: 11px;
+  font-weight: 600;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   ROLE
+   ========================================================= */
+
+.sf-role {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 8px 11px;
+
   border-radius: 8px;
+
+  font-size: 11px;
+  font-weight: 750;
+
+  white-space: nowrap;
 }
 
-.card-toolbar input {
-  flex: 1;
+.sf-role-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
 }
 
-.result-count {
-  margin-left: auto;
+.sf-role.student {
+  background: #ecfdf5;
+  color: #087f5b;
+
+  border: 1px solid #d9f4e7;
+}
+
+.sf-role.student .sf-role-dot {
+  background: #10b981;
+}
+
+.sf-role.faculty {
+  background: #eef6ff;
+  color: #3979aa;
+
+  border: 1px solid #dcecf9;
+}
+
+.sf-role.faculty .sf-role-dot {
+  background: #4b91c7;
+}
+
+.sf-role.unknown {
+  background: #f4f5f5;
+  color: #7b8781;
+
+  border: 1px solid #e9ecea;
+}
+
+.sf-role.unknown .sf-role-dot {
+  background: #9aa49f;
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.sf-loading {
+  height: 230px !important;
+
+  text-align: center;
+
+  color: #8e9d95 !important;
+
   font-size: 13px;
-  color: gray;
 }
 
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(72, 72, 156, 0.55);
-  backdrop-filter: blur(6px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-  animation: fadeIn 0.2s ease;
+.sf-loading > * {
+  display: inline-flex;
+
+  vertical-align: middle;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+.loading-spinner {
+  width: 24px;
+  height: 24px;
+
+  margin-right: 10px;
+
+  border: 3px solid #dcece4;
+  border-top-color: #059669;
+
+  border-radius: 50%;
+
+  animation:
+    sf-spin 0.8s linear infinite;
 }
 
-.modal {
-  width: 420px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(14px);
-  border-radius: 18px;
-  padding: 26px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  transform: translateY(10px);
-  animation: popUp 0.25s ease forwards;
-}
-
-@keyframes popUp {
+@keyframes sf-spin {
   to {
-    transform: translateY(0);
+    transform: rotate(360deg);
   }
 }
 
-.modal h3 {
-  margin-bottom: 16px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #111;
+
+/* =========================================================
+   EMPTY
+   ========================================================= */
+
+.sf-empty {
+  height: 280px !important;
+
+  text-align: center;
 }
 
-.modal-form {
+.sf-empty-icon {
+  width: 52px;
+  height: 52px;
+
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 13px;
+
+  background: #f0f7f4;
+
+  color: #91a79d;
+
+  border-radius: 13px;
+
+  font-size: 22px;
 }
 
-.modal-form input,
-.modal-form select {
-  padding: 11px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.08);
-  outline: none;
-  font-size: 14px;
-  transition: all 0.2s ease;
-  background: #fff;
+.sf-empty strong {
+  display: block;
+
+  color: #53665d;
+
+  font-size: 15px;
+  font-weight: 800;
 }
 
-.modal-form input:focus,
-.modal-form select:focus {
-  border-color: #7926e6;
-  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+.sf-empty span {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #9ba8a2;
+
+  font-size: 11px;
 }
 
-.add-btn {
-  background: linear-gradient(135deg, #421181, #2b0755);
-  color: #fff;
-  border: none;
-  padding: 10px 16px;
-  border-radius: 10px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 6px 18px rgba(99,102,241,0.25);
+
+/* =========================================================
+   RESPONSIVE — 1200px
+   ========================================================= */
+
+@media (max-width: 1200px) {
+
+  .sf-header {
+    padding: 23px 25px;
+  }
+
+  .sf-table th,
+  .sf-table td {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .sf-table th:nth-child(1) {
+    width: 28%;
+  }
+
+  .sf-table th:nth-child(2) {
+    width: 30%;
+  }
+
+  .sf-table th:nth-child(3) {
+    width: 25%;
+  }
+
+  .sf-table th:nth-child(4) {
+    width: 17%;
+  }
 }
 
-.add-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 25px rgba(99,102,241,0.35);
+
+/* =========================================================
+   RESPONSIVE — 1000px
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .sf-header {
+    min-height: 105px;
+  }
+
+  .sf-header h1 {
+    font-size: 27px;
+  }
+
+  .sf-summary {
+    gap: 13px;
+  }
+
+  .sf-summary-card {
+    padding: 16px;
+  }
+
+  .sf-table td {
+    height: 82px;
+  }
 }
 
-.modal-actions {
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  margin-top: 14px;
+
+/* =========================================================
+   RESPONSIVE — 850px
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .sf-summary {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .sf-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .sf-search {
+    flex-basis: 100%;
+  }
+
+  .sf-result-count {
+    margin-left: auto;
+  }
+
+  .sf-table {
+    min-width: 850px;
+  }
 }
 
-.modal-actions button {
-  padding: 9px 14px;
-  border-radius: 10px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s ease;
+
+/* =========================================================
+   RESPONSIVE — 700px
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .sf-header {
+    align-items: flex-start;
+
+    padding: 20px;
+  }
+
+  .sf-header h1 {
+    font-size: 24px;
+  }
+
+  .sf-header p {
+    font-size: 12px;
+  }
+
+  .sf-header-count {
+    display: none;
+  }
+
+  .sf-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .sf-summary-card {
+    min-height: 88px;
+  }
+
+  .sf-filter {
+    flex: 1;
+  }
+
+  .sf-table-header {
+    padding: 17px 18px;
+  }
+
+  .sf-table-header h2 {
+    font-size: 18px;
+  }
+
+  .sf-table {
+    min-width: 850px;
+  }
 }
 
-.modal-actions button[type="button"] {
-  background: transparent;
-  border: 1px solid rgba(68, 9, 122, 0.1);
+
+/* =========================================================
+   RESPONSIVE — 520px
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+  .sf-header {
+    min-height: 92px;
+
+    padding: 17px;
+
+    border-radius: 14px;
+  }
+
+  .sf-header-left {
+    gap: 13px;
+  }
+
+  .sf-header-icon {
+    width: 48px;
+    height: 48px;
+
+    border-radius: 12px;
+
+    font-size: 21px;
+  }
+
+  .sf-eyebrow {
+    font-size: 9px;
+  }
+
+  .sf-header h1 {
+    font-size: 21px;
+  }
+
+  .sf-header p {
+    font-size: 11px;
+  }
+
+  .sf-toolbar {
+    padding: 10px;
+
+    border-radius: 12px;
+  }
+
+  .sf-search {
+    min-width: 100%;
+
+    height: 46px;
+  }
+
+  .sf-filter {
+    height: 46px;
+    min-width: 0;
+  }
+
+  .sf-result-count {
+    display: none;
+  }
+
+  .sf-summary-card {
+    min-height: 86px;
+
+    padding: 15px;
+  }
+
+  .sf-summary-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .sf-summary-card strong {
+    font-size: 23px;
+  }
+
+  .sf-table-card {
+    border-radius: 13px;
+  }
+
+  .sf-table-header {
+    min-height: 72px;
+  }
+
+  .sf-table-header h2 {
+    font-size: 17px;
+  }
 }
 
-.modal-actions button[type="button"]:hover {
-  background: rgba(0,0,0,0.05);
-}
 
-.modal-actions button[type="submit"] {
-  background: #3a065e;
-  color: white;
-  border: none;
-}
+/* =========================================================
+   RESPONSIVE — 400px
+   ========================================================= */
 
-.modal-actions button[type="submit"]:hover {
-  background: #3f044b;
-  transform: translateY(-1px);
-}
+@media (max-width: 400px) {
 
-.modal-form input::placeholder {
-  color: rgba(0,0,0,0.35);
+  .sf-header {
+    padding: 15px;
+  }
+
+  .sf-header h1 {
+    font-size: 19px;
+  }
+
+  .sf-header p {
+    font-size: 10px;
+  }
+
+  .sf-summary-card {
+    gap: 12px;
+  }
+
+  .sf-summary-icon {
+    width: 41px;
+    height: 41px;
+
+    font-size: 18px;
+  }
+
+  .sf-summary-card span {
+    font-size: 11px;
+  }
+
+  .sf-summary-card strong {
+    font-size: 21px;
+  }
 }

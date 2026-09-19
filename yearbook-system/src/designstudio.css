@@ -1,405 +1,1386 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  font-family: "Inter", sans-serif;
-}
-
-/* MAIN STUDIO */
-
-
-.design-top h1 {
-  font-size: 28px;
-  color: #111827;
-  margin-bottom: 4px;
-}
-
-.design-top p {
-  font-size: 14px;
-  color: #ffffff;
-}
-
-.design-studio {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden;
-}
-
-
-
-.header-left h3 {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-
-.header-left span {
-  font-size: 13px;
-  color: #6b7280;
-}
-
-.save-btn {
-  height: 36px;
-  padding: 0 18px;
-
-  border: none;
-  border-radius: 10px;
-
-  background: #2c005e;
-  color: white;
-
-  font-size: 13px;
-  font-weight: 600;
-
-  cursor: pointer;
-}
-
-/* BODY */
-
-.studio-body {
-  flex: 1;
-
-  display: flex;
-
-  min-height: 0;
-  overflow: hidden;
-}
-
-/* LEFT SIDEBAR */
-
-.left-sidebar {
-  width: 230px;
-  min-width: 230px;
-
-  border-right: 1px solid #e5e7eb;
-
-  padding: 16px 14px;
-
-  overflow: hidden;
-
-  background: transparent;
-}
-
-.left-sidebar h5 {
-  font-size: 11px;
-  color: #6b7280;
-
-  margin-bottom: 14px;
-  letter-spacing: 1px;
-}
-
-.design-top {
-  height: 64px;
-
-  border-bottom: 1px solid #e5e7eb;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 20px;
-
-  background: white;
-
-  flex-shrink: 0;
-}
-
-.tool-btn {
-  width: 100%;
-  height: 42px;
-
-  border: none;
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  padding: 0 12px;
-
-  border-radius: 12px;
-
-  cursor: pointer;
-
-  font-size: 14px;
-  color: #1f2937;
-
-  transition: 0.2s;
-  margin-bottom: 6px;
-}
-
-.tool-btn:hover {
-  background: #e4ebe2;
-}
-
-/* THEMES */
-
-.themes-section {
-  margin-top: 26px;
-}
-
-.theme-card {
-  background: #ffffff;
-
-  border: 1px solid #d7ddd7;
-  border-radius: 14px;
-
-  padding: 12px;
-
-  margin-bottom: 10px;
-  cursor: pointer;
-
-  transition: 0.2s;
-}
-
-.theme-card:hover {
-  transform: translateY(-1px);
-}
-
-.theme-card.active {
-  border: 2px solid #3f0368;
-}
-
-.colors {
-  display: flex;
-  gap: 6px;
-
-  margin-bottom: 10px;
-}
-
-.colors span {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-}
-
-.green {
-  background: #ad6ee7;
-}
-
-.light {
-  background: #a7f3d0;
-}
-
-.mint {
-  background: #d1fae5;
-}
-
-.dark {
-  background: #14532d;
-}
-
-.forest {
-  background: #166534;
-}
-
-.soft {
-  background: #dcfce7;
-}
-
-.theme-card h4 {
-  font-size: 13px;
-  margin-bottom: 4px;
-}
-
-.theme-card p {
-  font-size: 11px;
-  color: #6b7280;
-}
-
-/* WORKSPACE */
-
-.workspace {
-  flex: 1;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  overflow: hidden;
-
-  position: relative;
-}
-
-/* CANVAS */
-
-.canvas-container {
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding: 18px;
-
-  overflow: hidden;
-}
-
-/* YEARBOOK PAGE */
-
-.yearbook-page {
-  aspect-ratio: 794 / 1123;
-
-  height: 100%;
-  max-height: 100%;
-
-  background: white;
-
-  position: relative;
-
-  border-radius: 8px;
-
-  box-shadow:
-    0 15px 45px rgba(0, 0, 0, 0.12);
-
-  overflow: hidden;
-}
-
-/* AUTO SCALE TO FIT SCREEN */
-
-@media (min-width: 1200px) {
-  .yearbook-page {
-    height: 95%;
-  }
-}
-
-.yearbook-page h1 {
-  position: absolute;
-  top: 42%;
-  left: 50%;
-
-  transform: translate(-50%, -50%);
-
-  font-size: clamp(28px, 2vw, 42px);
-
-  font-family: "Playfair Display", serif;
-  color: #1f2a44;
-}
-
-.page-size {
-  position: absolute;
-  bottom: 18px;
-  right: 22px;
-
-  font-size: 11px;
-  color: #94a3b8;
-}
-
-/* RIGHT SIDEBAR */
-
-.right-sidebar {
-  width: 210px;
-  min-width: 210px;
-
-  border-left: 1px solid #e5e7eb;
-
-  display: flex;
-  flex-direction: column;
-
-  padding: 12px;
-
-  overflow: hidden;
-
-  background: transparent;
-}
-
-.pages-scroll {
-  flex: 1;
-
-  overflow-y: auto;
-  padding-right: 2px;
-}
-
-/* CUSTOM SCROLLBAR */
-
-.pages-scroll::-webkit-scrollbar {
-  width: 6px;
-}
-
-.pages-scroll::-webkit-scrollbar-thumb {
-  background: #cdd5cc;
-  border-radius: 20px;
-}
+/* =========================================================
+   MAIN STUDIO — ADSSU GREEN THEME
+   Theme colors only — layout/spacing/behavior unchanged
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE PREVIEW
+   ========================================================= */
 
 .page-thumbnail {
-  background: #ffffff;
-
-  border: 1px solid #d7ddd7;
-  border-radius: 12px;
-
-  margin-bottom: 12px;
-
-  cursor: pointer;
-
-  overflow: hidden;
-
-  transition: 0.2s;
+    width: 180px;
+    margin: 0 auto 15px;
+    background: #fff;
+    border: 1px solid #d7e4dd;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .2s;
 }
 
 .page-thumbnail:hover {
-  transform: translateY(-2px);
+    transform: translateY(-2px);
 }
 
 .page-thumbnail.active {
-  border: 2px solid #22c55e;
+    border: 2px solid #176b4d;
 }
 
-.thumb-preview {
-  aspect-ratio: 794 / 1123;
 
-  background: white;
+/* =========================================================
+   FONT SIZE BOX
+   ========================================================= */
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.font-size-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #d7e4dd;
+    border-radius: 8px;
+    overflow: hidden;
+}
 
-  font-size: 11px;
-  color: #94a3b8;
+.font-size-box input {
+    width: 55px;
+    text-align: center;
+    border: none;
+    outline: none;
+    height: 36px;
+}
+
+.font-size-box button {
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: #fff;
+    cursor: pointer;
+}
+
+.font-size-box button:hover {
+    background: #edf6f1;
+}
+
+
+/* =========================================================
+   HEADER TOOLBAR
+   ========================================================= */
+
+.header-toolbar button {
+    width: 38px;
+    height: 38px;
+    border: 1px solid #d7e4dd;
+    background: #fff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:
+        background-color 160ms ease,
+        border-color 160ms ease,
+        transform 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.header-toolbar button:hover {
+    background: #edf6f1;
+    border-color: #b9d4c6;
+    transform: translateY(-1px);
+}
+
+.header-toolbar button:active {
+    transform: scale(0.96);
+}
+
+.header-toolbar button:disabled,
+.header-toolbar select:disabled,
+.header-toolbar input:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.active-tool {
+    background: #176b4d !important;
+    color: #fff;
+    border-color: #176b4d !important;
+}
+
+
+/* =========================================================
+   THUMB PAPER
+   ========================================================= */
+
+.thumb-paper {
+    width: 100%;
+    aspect-ratio: 794 / 1123;
+    background: #fff;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thumb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.thumb-empty {
+    color: #82968c;
+    font-size: 13px;
 }
 
 .thumb-footer {
-  height: 36px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 0 10px;
-
-  border-top: 1px solid #e5e7eb;
-
-  font-size: 12px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #e1ebe5;
+    font-size: 12px;
 }
 
+
+/* =========================================================
+   DESIGN TOP
+   ========================================================= */
+
+.design-top {
+    height: 64px;
+    background: #fff;
+    border-bottom: 1px solid #dce7e1;
+    display: grid;
+    grid-template-columns: 250px 1fr 250px;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.toolbar-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.design-top h1 {
+    font-size: 28px;
+    color: #163b2d;
+    margin-bottom: 4px;
+}
+
+.design-top p {
+    font-size: 14px;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN STUDIO
+   ONLY RIGHT PAGE PREVIEW SCROLLS
+   ========================================================= */
+
+.design-studio {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden !important;
+}
+
+.header-left h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #163b2d;
+}
+
+.header-left span {
+    font-size: 13px;
+    color: #718179;
+}
+
+
+/* =========================================================
+   SAVE BUTTON
+   ========================================================= */
+
+.save-btn {
+    height: 36px;
+    padding: 0 18px;
+    border: none;
+    border-radius: 10px;
+    background: #176b4d;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.save-btn:hover {
+    background: #12583f;
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.studio-body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   HEADER RIGHT
+   ========================================================= */
+
+.header-right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 14px;
+    box-shadow: none;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease,
+        max-height 180ms ease,
+        padding 180ms ease,
+        box-shadow 180ms ease,
+        visibility 0ms linear 180ms;
+    will-change: opacity, transform, max-height;
+}
+
+
+/* =========================================================
+   RIGHT SIDEBAR
+   ========================================================= */
+
+.right-sidebar {
+    width: 220px;
+    background: white;
+    border-left: 1px solid #dce7e1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.pages-scroll {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+/* =========================================================
+   PAGE PREVIEW
+   ========================================================= */
+
+.page-preview {
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 8px;
+    transition: .2s;
+    background: white;
+}
+
+.page-preview.active {
+    border-color: #176b4d;
+}
+
+.page-preview img {
+    width: 100%;
+    aspect-ratio: 794 / 1123;
+    object-fit: contain;
+    border: 1px solid #dce7e1;
+    background: #fff;
+}
+
+.page-placeholder {
+    width: 100%;
+    aspect-ratio: 794 / 1123;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f6f3;
+    border: 1px dashed #b9c9c1;
+    color: #65776f;
+}
+
+.page-preview span {
+    display: block;
+    margin-top: 6px;
+    text-align: center;
+    font-size: 13px;
+    color: #34483f;
+}
+
+
+/* =========================================================
+   TEMPLATE PANEL
+   ========================================================= */
+
+.template-panel {
+    margin-top: 10px;
+    background: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 0 5px 20px rgba(20, 55, 42, .15);
+}
+
+.template-card {
+    cursor: pointer;
+    border: 1px solid #d7e4dd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: .2s;
+}
+
+.template-card:hover {
+    transform: translateY(-3px);
+    border-color: #176b4d;
+}
+
+.template-preview {
+    height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf6f1;
+    font-size: 70px;
+}
+
+.template-name {
+    padding: 10px;
+    text-align: center;
+    font-weight: 600;
+    color: #24352e;
+}
+
+
+/* =========================================================
+   VISIBLE TOOLBAR
+   ========================================================= */
+
+.header-toolbar.visible {
+    opacity: 1;
+    transform: translateY(0);
+    padding: 8px 14px;
+    border: 1px solid #dce7e1;
+    box-shadow: 0 8px 24px rgba(20, 55, 42, .08);
+    max-height: 80px;
+    pointer-events: auto;
+    visibility: visible;
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease,
+        max-height 180ms ease,
+        padding 180ms ease,
+        box-shadow 180ms ease,
+        visibility 0ms linear 0ms;
+}
+
+.header-toolbar.hidden {
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.header-toolbar select,
+.header-toolbar input[type="number"] {
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #d7e4dd;
+    border-radius: 8px;
+    background: #fff;
+}
+
+.header-toolbar select:focus,
+.header-toolbar input[type="number"]:focus {
+    border-color: #176b4d;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(23, 107, 77, .08);
+}
+
+
+@keyframes toolbarFade {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   PROPERTIES PANEL
+   ========================================================= */
+
+.properties-panel {
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid #dce7e1;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.properties-panel h4 {
+    margin-bottom: 12px;
+    color: #163b2d;
+}
+
+.properties-panel label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 13px;
+    color: #34483f;
+}
+
+.properties-panel input[type="color"] {
+    width: 100%;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 12px;
+}
+
+.properties-panel button {
+    width: 100%;
+}
+
+
+/* =========================================================
+   SHAPES
+   ========================================================= */
+
+.shapes-card {
+    margin-top: 12px;
+    background: #fff;
+    border: 1px solid #dce7e1;
+    border-radius: 14px;
+    padding: 14px;
+}
+
+.shapes-card h4 {
+    margin: 0 0 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #163b2d;
+}
+
+.shapes-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.shape-item {
+    height: 70px;
+    border: 1px solid #dce7e1;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.shape-item:hover {
+    background: #edf6f1;
+    border-color: #b9d4c6;
+    transform: translateY(-2px);
+}
+
+.rectangle {
+    width: 40px;
+    height: 30px;
+    background: #176b4d;
+}
+
+.circle {
+    width: 40px;
+    height: 40px;
+    background: #176b4d;
+    border-radius: 50%;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid #176b4d;
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR
+   ========================================================= */
+
+.left-sidebar {
+    width: 230px;
+    min-width: 230px;
+    border-right: 1px solid #dce7e1;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.left-sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 14px;
+}
+
+
+/* =========================================================
+   PUBLISH MODAL OVERLAY
+   ========================================================= */
+
+.publish-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 38, 30, 0.45);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+
+/* =========================================================
+   PAGE DRAG
+   ========================================================= */
+
+.page-drag-wrapper {
+    position: relative;
+    cursor: grab;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.page-drag-wrapper:active {
+    cursor: grabbing;
+}
+
+.page-drag-wrapper[draggable="true"]:active {
+    opacity: 0.55;
+}
+
+.page-drag-over {
+    transform: translateY(-5px);
+}
+
+
+/* =========================================================
+   SAVE / PUBLISH MENU
+   PROFESSIONAL SCHOOL GREEN
+   ========================================================= */
+
+.save-menu {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+
+/* Main Publish Button */
+
+.save-menu > button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border: 1px solid #176b4d;
+    border-radius: 7px;
+    background: #176b4d;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+.save-menu > button:hover {
+    background: #12583f;
+    border-color: #12583f;
+    box-shadow: 0 4px 12px rgba(23, 107, 77, .18);
+}
+
+.save-menu > button:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   SAVE DROPDOWN
+   ========================================================= */
+
+.save-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 190px;
+    padding: 6px;
+    background: #fff;
+    border: 1px solid #dce7e1;
+    border-radius: 9px;
+    box-shadow:
+        0 10px 30px rgba(20, 55, 42, .12),
+        0 2px 6px rgba(20, 55, 42, .06);
+    z-index: 1000;
+    animation: publishDropdown 0.16s ease-out;
+}
+
+@keyframes publishDropdown {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Dropdown Buttons */
+
+.save-dropdown button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 6px;
+    background: transparent;
+    color: #24352e;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background 0.18s ease,
+        color 0.18s ease;
+}
+
+.save-dropdown button:hover {
+    background: #edf6f1;
+    color: #176b4d;
+}
+
+.save-dropdown button:first-child:hover {
+    background: #e8f3ed;
+    color: #12583f;
+}
+
+
+/* =========================================================
+   MODAL OVERLAY
+   ========================================================= */
+
+.publish-modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(17, 38, 30, .45);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 9999;
+    animation: modalOverlay 0.2s ease;
+}
+
+@keyframes modalOverlay {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+/* =========================================================
+   PUBLISH FORM
+   ========================================================= */
+
+.publish-form {
+    width: 100%;
+    max-width: 520px;
+    padding: 30px;
+    background: #fff;
+    border: 1px solid #dce7e1;
+    border-radius: 12px;
+    box-shadow:
+        0 24px 60px rgba(20, 55, 42, .18),
+        0 4px 12px rgba(20, 55, 42, .08);
+    font-family: "Inter", "Segoe UI", sans-serif;
+    animation: modalForm 0.2s ease-out;
+}
+
+@keyframes modalForm {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+
+/* =========================================================
+   MODAL TITLE
+   ========================================================= */
+
+.publish-form h2 {
+    margin: 0 0 24px;
+    color: #163b2d;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.publish-form h2::after {
+    content: "";
+    display: block;
+    width: 34px;
+    height: 3px;
+    margin-top: 9px;
+    background: #176b4d;
+    border-radius: 3px;
+}
+
+
+/* =========================================================
+   LABELS
+   ========================================================= */
+
+.publish-form label {
+    display: block;
+    margin: 0 0 7px;
+    color: #34483f;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   INPUTS / TEXTAREA
+   ========================================================= */
+
+.publish-form input,
+.publish-form textarea {
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 17px;
+    padding: 11px 13px;
+    border: 1px solid #ccd9d2;
+    border-radius: 7px;
+    background: #fbfdfc;
+    color: #24352e;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.publish-form input {
+    height: 42px;
+}
+
+.publish-form textarea {
+    min-height: 100px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+
+/* Focus */
+
+.publish-form input:focus,
+.publish-form textarea:focus {
+    border-color: #176b4d;
+    background: #fff;
+    box-shadow:
+        0 0 0 3px rgba(23, 107, 77, .09);
+}
+
+
+/* Placeholder */
+
+.publish-form input::placeholder,
+.publish-form textarea::placeholder {
+    color: #9aa9a2;
+}
+
+
+/* =========================================================
+   ACTION BUTTONS
+   ========================================================= */
+
+.publish-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid #e5ece8;
+}
+
+
+/* Cancel */
+
+.publish-actions button:first-child {
+    min-width: 90px;
+    height: 40px;
+    padding: 0 17px;
+    border: 1px solid #ccd9d2;
+    border-radius: 7px;
+    background: #fff;
+    color: #4b5d55;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.publish-actions button:first-child:hover {
+    background: #f4f7f5;
+    border-color: #b9c9c1;
+    color: #24352e;
+}
+
+
+/* Publish */
+
+.publish-actions button:last-child {
+    min-width: 100px;
+    height: 40px;
+    padding: 0 18px;
+    border: 1px solid #176b4d;
+    border-radius: 7px;
+    background: #176b4d;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.15s ease;
+}
+
+.publish-actions button:last-child:hover {
+    background: #12583f;
+    box-shadow:
+        0 5px 14px rgba(23, 107, 77, .2);
+}
+
+.publish-actions button:last-child:active {
+    transform: translateY(1px);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .publish-modal-overlay {
+        padding: 16px;
+    }
+
+    .publish-form {
+        padding: 24px 20px;
+        max-width: 100%;
+    }
+
+    .publish-form h2 {
+        font-size: 20px;
+    }
+
+    .publish-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .publish-actions button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   PAGE DRAG INDICATOR
+   ========================================================= */
+
+.page-drag-over::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    right: -5px;
+    top: -5px;
+    height: 3px;
+    background: #176b4d;
+    border-radius: 4px;
+    z-index: 10;
+}
+
+
+/* =========================================================
+   PUBLISH FORM OVERRIDE
+   ========================================================= */
+
+.publish-form {
+    width: 500px;
+    max-width: 90%;
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(20, 55, 42, .25);
+}
+
+
+/* =========================================================
+   LEFT SIDEBAR SCROLLBAR
+   ========================================================= */
+
+.left-sidebar-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.left-sidebar-content::-webkit-scrollbar-thumb {
+    background: #b9cfc2;
+    border-radius: 20px;
+}
+
+.left-sidebar-content::-webkit-scrollbar-thumb:hover {
+    background: #8eaf9d;
+}
+
+.left-sidebar h5 {
+    font-size: 11px;
+    color: #718179;
+    margin-bottom: 14px;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================================
+   DESIGN TOP
+   ========================================================= */
+
+.design-top {
+    height: 64px;
+    border-bottom: 1px solid #dce7e1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background: #fff;
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   TOOL BUTTON
+   ========================================================= */
+
+.tool-btn {
+    width: 100%;
+    height: 42px;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 0 12px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #1f2937;
+    transition: 0.2s ease;
+    margin-bottom: 6px;
+}
+
+.tool-btn svg {
+    flex-shrink: 0;
+    color: #176b4d;
+    transition: 0.2s ease;
+}
+
+.tool-btn:hover {
+    background: #e8f3ed;
+    color: #176b4d;
+}
+
+.tool-btn:hover svg {
+    color: #12583f;
+}
+
+/* =========================================================
+   THEMES
+   ========================================================= */
+
+.themes-section {
+    margin-top: 26px;
+}
+
+.theme-card {
+    background: #fff;
+    border: 1px solid #d7e4dd;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.theme-card:hover {
+    transform: translateY(-1px);
+    border-color: #b9d4c6;
+}
+
+.theme-card.active {
+    border: 2px solid #176b4d;
+}
+
+
+/* Theme color circles */
+
+.colors {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.colors span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+}
+
+
+/* Green palette */
+
+.green {
+    background: #176b4d;
+}
+
+.light {
+    background: #86c7a5;
+}
+
+.mint {
+    background: #d1fae5;
+}
+
+.dark {
+    background: #14532d;
+}
+
+.forest {
+    background: #166534;
+}
+
+.soft {
+    background: #dcfce7;
+}
+
+.theme-card h4 {
+    font-size: 13px;
+    margin-bottom: 4px;
+    color: #24352e;
+}
+
+.theme-card p {
+    font-size: 11px;
+    color: #6b7280;
+}
+
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f1f5f3;
+    overflow: hidden;
+}
+
+
+/* =========================================================
+   CANVAS
+   ========================================================= */
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* =========================================================
+   YEARBOOK PAGE
+   ========================================================= */
+
+.canvas-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 794px;
+    height: 770px;
+    transform-origin: center center;
+}
+
+.yearbook-page {
+    width: 794px;
+    height: 1123px;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.yearbook-page canvas {
+    display: block;
+}
+
+
+/* =========================================================
+   YEARBOOK TITLE
+   ========================================================= */
+
+.yearbook-page h1 {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: clamp(28px, 2vw, 42px);
+    font-family: "Playfair Display", serif;
+    color: #163b2d;
+}
+
+
+/* =========================================================
+   ZOOM CONTROLS
+   ========================================================= */
+
+.zoom-controls {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, .95);
+    border: 1px solid #dce7e1;
+    border-radius: 999px;
+    padding: 6px 10px;
+    box-shadow: 0 8px 24px rgba(20, 55, 42, .08);
+    z-index: 3;
+}
+
+.zoom-controls button {
+    border: none;
+    background: #edf6f1;
+    color: #176b4d;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.zoom-controls button:hover {
+    background: #dceee5;
+}
+
+.zoom-controls span {
+    min-width: 48px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+
+/* =========================================================
+   PAGE SIZE
+   ========================================================= */
+
+.page-size {
+    position: absolute;
+    bottom: 18px;
+    right: 22px;
+    font-size: 11px;
+    color: #718179;
+    background: rgba(255, 255, 255, .9);
+    padding: 5px 8px;
+    border-radius: 999px;
+}
+
+
+/* =========================================================
+   RIGHT SIDEBAR
+   ========================================================= */
+
+.right-sidebar {
+    width: 210px;
+    min-width: 210px;
+    border-left: 1px solid #dce7e1;
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.pages-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 2px;
+}
+
+
+/* =========================================================
+   CUSTOM SCROLLBAR
+   ========================================================= */
+
+.pages-scroll::-webkit-scrollbar {
+    width: 6px;
+}
+
+.pages-scroll::-webkit-scrollbar-thumb {
+    background: #b9cfc2;
+    border-radius: 20px;
+}
+
+.pages-scroll::-webkit-scrollbar-thumb:hover {
+    background: #8eaf9d;
+}
+
+
+/* =========================================================
+   PAGE THUMBNAIL
+   ========================================================= */
+
+.page-thumbnail {
+    background: #fff;
+    border: 1px solid #d7e4dd;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    overflow: hidden;
+    transition: .2s;
+    width: 100%;
+}
+
+.page-thumbnail:hover {
+    transform: translateY(-2px);
+}
+
+.page-thumbnail.active {
+    border: 2px solid #176b4d;
+}
+
+
+/* =========================================================
+   THUMB FOOTER
+   ========================================================= */
+
+.thumb-footer {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 10px;
+    border-top: 1px solid #e1ebe5;
+    font-size: 12px;
+    color: #52665c;
+}
+
+
+/* =========================================================
+   ADD PAGE BUTTON
+   ========================================================= */
+
 .add-page-button {
-  height: 44px;
+    height: 44px;
+    border: 1px solid #cbdcd3;
+    background: #fff;
+    color: #176b4d;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+    transition: .2s;
+}
 
-  border: 1px solid #d1d5db;
-  background: white;
-
-  border-radius: 12px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-
-  cursor: pointer;
-
-  font-weight: 600;
-
-  margin-top: 10px;
+.add-page-button:hover {
+    background: #edf6f1;
+    border-color: #176b4d;
+    color: #12583f;
 }
